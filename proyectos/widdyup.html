@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="wu.docTitle">WiddyUp — Case study · Andrés Betancourt</title>
+<meta name="description" content="Case study: designing the financial layer of a school fundraising ecosystem — validated with real clients before writing a line of production code." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16.png" />
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" />
+<meta name="theme-color" content="#4F46E5" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- WiddyUp runs on Sora + DM Sans, matching the product surface. -->
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/case-widdyup.css" />
+<link rel="stylesheet" href="../css/button.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="theme-widdyup">
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header site-header--project">
+  <a class="logo" href="../index.html" data-i18n-attr="aria-label:a11y.home">
+    <img src="../assets/icons/logo.svg" alt="" width="32" height="32" />
+  </a>
+
+  <a class="btn btn--text back-link" href="../index.html#projects">
+    <img src="../assets/icons/arrow-back.svg" alt="" width="16" height="16" />
+    <span data-i18n="wu.back">Back to portfolio</span>
+  </a>
+
+  <p class="header-project">
+    <img src="../assets/images/brands/widdyup.png" alt="WiddyUp" width="120" height="22" />
+  </p>
+
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button type="button" data-lang-option="es" aria-pressed="false">ES</button>
+    <span class="lang-sep" aria-hidden="true">/</span>
+    <button type="button" data-lang-option="en" aria-pressed="true">EN</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="wu-hero" aria-labelledby="wu-heading">
+    <div class="wu-shell">
+      <div class="wu-kicker wu-kicker--on-indigo" data-i18n="wu.hero.kicker">Product design — case study</div>
+      <h1 class="wu-hero-title" id="wu-heading">WiddyUp</h1>
+      <p class="wu-hero-lede" data-i18n="wu.hero.lede">Designing the financial layer of a school fundraising ecosystem — validated with real clients before writing a line of production code.</p>
+
+      <div class="wu-meta">
+        <div class="wu-meta-item">
+          <div class="wu-meta-label" data-i18n="wu.hero.productLabel">Product</div>
+          <div class="wu-meta-value" data-i18n="wu.hero.product">Fundraising and operational finance for school performing-arts programs.</div>
+        </div>
+        <div class="wu-meta-item">
+          <div class="wu-meta-label" data-i18n="wu.hero.roleLabel">My role</div>
+          <div class="wu-meta-value" data-i18n="wu.hero.role">End-to-end product design: research, architecture, flows, hi-fi, and prototype.</div>
+        </div>
+        <div class="wu-meta-item">
+          <div class="wu-meta-label" data-i18n="wu.hero.challengeLabel">Challenge</div>
+          <div class="wu-meta-value" data-i18n="wu.hero.challenge">Validate a modular model before investing in development.</div>
+        </div>
+        <div class="wu-meta-item">
+          <div class="wu-meta-label" data-i18n="wu.hero.constraintLabel">Constraint</div>
+          <div class="wu-meta-value" data-i18n="wu.hero.constraint">Tight timeline for a credible prototype, ready for interviews.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wu-shell wu-hero-phones">
+      <img class="wu-phone-1" src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneAdmin" />
+      <img class="wu-phone-2" src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneMoney" />
+      <img class="wu-phone-3" src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phonePortfolio" />
+    </div>
+  </section>
+
+  <!-- CONTEXT -->
+  <section class="wu-section" aria-labelledby="wu-context">
+    <div class="wu-shell">
+      <div class="wu-kicker" data-i18n="wu.context.kicker">Context</div>
+      <h2 class="wu-title" id="wu-context" data-i18n="wu.context.title">Scattered tools, zero visibility</h2>
+      <p class="wu-lede" data-i18n="wu.context.lede">School bands, orchestras, and dance teams run fundraising and fee collection with spreadsheets, text messages, and cash. Program directors lose hours to manual follow-up; students and families never clearly know what they owe or why.</p>
+
+      <div class="wu-quote">
+        <p data-i18n="wu.context.quote">"The product needs to feel like a Slack-style ecosystem: a free messaging and profiles layer, with payment modules that feel independent of each other — not mandatory as a bundle."</p>
+        <div class="wu-quote-label" data-i18n="wu.context.quoteLabel">Key business insight</div>
+      </div>
+
+      <div class="wu-personas">
+        <div class="wu-persona">
+          <h3 data-i18n="wu.persona.adminTitle">Administrator</h3>
+          <p data-i18n="wu.persona.adminDesc">Program director. Back-end view, group management.</p>
+        </div>
+        <div class="wu-persona">
+          <h3 data-i18n="wu.persona.studentTitle">Member / student</h3>
+          <p data-i18n="wu.persona.studentDesc">Gen Z/Alpha, 14–18. Customer-facing dashboard, native to how they already use tech.</p>
+        </div>
+        <div class="wu-persona">
+          <h3 data-i18n="wu.persona.parentTitle">Parent / guardian</h3>
+          <p data-i18n="wu.persona.parentDesc">Separate login, linked to the student profile — for compliance when communicating with minors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="wu-section wu-section--tight-top" aria-labelledby="wu-arch">
+    <div class="wu-shell">
+      <div class="wu-kicker" data-i18n="wu.arch.kicker">Process — information architecture</div>
+      <h2 class="wu-title" id="wu-arch" data-i18n="wu.arch.title">Four modules, one clear hierarchy</h2>
+      <p class="wu-lede" style="margin-bottom:48px" data-i18n="wu.arch.lede">Before drawing a single screen, I defined the product’s four modules and how they relate to each other.</p>
+
+      <div class="wu-modules">
+        <div class="wu-module wu-module--indigo">
+          <h3>Smart Dashboard</h3>
+          <div class="wu-icon-dash" aria-hidden="true"><span></span><span></span></div>
+          <p data-i18n="wu.arch.dash">The central nervous system. Two views: administrator and member.</p>
+        </div>
+        <div class="wu-module wu-module--teal">
+          <h3>Financial Workflow</h3>
+          <div class="wu-icon-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p data-i18n="wu.arch.fin">The core to validate. Setup, maintenance, end-of-season close.</p>
+        </div>
+        <div class="wu-module wu-module--accent">
+          <h3>Fundraising Workflow</h3>
+          <div class="wu-icon-play" aria-hidden="true"><span></span></div>
+          <p data-i18n="wu.arch.fund">The entry wedge. Video storytelling, not legacy fundraising.</p>
+        </div>
+        <div class="wu-module wu-module--violet">
+          <h3>Communication Module</h3>
+          <div class="wu-icon-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p data-i18n="wu.arch.comm">Light Notion-style feed. First to cut if time ran short.</p>
+        </div>
+      </div>
+
+      <p class="wu-note" data-i18n="wu.arch.note">If something had to be cut for time, Communication was sacrificed first. Dashboard, Financial, and Fundraising were non-negotiable.</p>
+
+      <div class="wu-stats">
+        <div class="wu-stat wu-stat--indigo">
+          <b>4</b>
+          <span data-i18n="wu.stat.modules">Modules</span>
+        </div>
+        <div class="wu-stat wu-stat--teal">
+          <b>13</b>
+          <span data-i18n="wu.stat.screens">Hi-fi screens</span>
+        </div>
+        <div class="wu-stat wu-stat--accent">
+          <b>3</b>
+          <span data-i18n="wu.stat.flows">User flows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USER FLOWS -->
+  <section class="wu-section wu-flows" aria-labelledby="wu-flows">
+    <div class="wu-shell">
+      <div class="wu-kicker wu-kicker--on-indigo" data-i18n="wu.flows.kicker">Process — user flows</div>
+      <h2 class="wu-title" id="wu-flows" data-i18n="wu.flows.title">Three flows, three different frictions</h2>
+
+      <div class="wu-flow-grid">
+        <div class="wu-flow-card">
+          <div class="wu-flow-card-label wu-flow-card-label--indigo" data-i18n="wu.flow.adminLabel">01 · ADMINISTRATOR</div>
+          <div class="wu-timeline">
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--indigo"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.a1t">Choose modules</strong><span data-i18n="wu.flow.a1d">Fundraising, Financial, or both.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--indigo"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.a2t">Invite members</strong><span data-i18n="wu.flow.a2d">QR or link, no friction.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--indigo"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.a3t">Configure charges</strong><span data-i18n="wu.flow.a3d">Amount and due date per task.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--indigo"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.a4t">Automatic follow-up</strong><span data-i18n="wu.flow.a4d">Reminders and approvals from the dashboard.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wu-flow-card">
+          <div class="wu-flow-card-label wu-flow-card-label--teal" data-i18n="wu.flow.studentLabel">02 · STUDENT</div>
+          <div class="wu-timeline">
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--teal"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.s1t">Open invitation</strong><span data-i18n="wu.flow.s1d">Link or QR, group already identified.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--teal"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.s2t">Create account</strong><span data-i18n="wu.flow.s2d">Name and email only.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--teal"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.s3t">See balance &amp; fundraising</strong><span data-i18n="wu.flow.s3d">Next payment and group progress.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--teal"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.s4t">Pay</strong><span data-i18n="wu.flow.s4d">Apple Pay or card, instant confirmation.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wu-flow-card">
+          <div class="wu-flow-card-label wu-flow-card-label--accent" data-i18n="wu.flow.parentLabel">03 · PARENT / GUARDIAN</div>
+          <div class="wu-timeline">
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--accent"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.p1t">Receive invitation</strong><span data-i18n="wu.flow.p1d">Linked to the student profile.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--accent"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.p2t">Create own account</strong><span data-i18n="wu.flow.p2d">Separate login, for compliance with minors.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--accent"></div><div class="wu-step-line"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.p3t">See child’s balance</strong><span data-i18n="wu.flow.p3d">Activity and pending payments.</span></div>
+            </div>
+            <div class="wu-step">
+              <div class="wu-step-rail"><div class="wu-step-node wu-step-node--accent"></div></div>
+              <div class="wu-step-body"><strong data-i18n="wu.flow.p4t">Pay on their behalf</strong><span data-i18n="wu.flow.p4d">Same payment flow, different login.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wu-onboarding">
+        <div class="wu-onboarding-time">&lt;30s</div>
+        <div class="wu-onboarding-label" data-i18n="wu.flows.onboarding">Student onboarding, start to finish</div>
+      </div>
+      <p class="wu-onboarding-note" data-i18n="wu.flows.onboardingNote">Any extra step means losing the student. The flow had to resolve in under half a minute.</p>
+    </div>
+  </section>
+
+  <!-- MID-FI TO HI-FI -->
+  <section class="wu-section" aria-labelledby="wu-iter">
+    <div class="wu-shell">
+      <div class="wu-kicker" data-i18n="wu.iter.kicker">Process — from mid-fi to hi-fi</div>
+      <h2 class="wu-title" id="wu-iter" data-i18n="wu.iter.title">I skipped wireframes. I iterated straight in Figma.</h2>
+      <p class="wu-lede" style="margin-bottom:20px;max-width:700px" data-i18n="wu.iter.lede">Given the timeline, I skipped low-fidelity wireframes and iterated directly in mid/hi-fi, using stakeholder comments as a fast feedback loop — 15-minute check-ins.</p>
+
+      <div class="wu-iter">
+        <div class="wu-iter-card">
+          <div class="wu-iter-label wu-iter-label--teal" data-i18n="wu.iter1.label">Iteration 01 — Home vs. module detail</div>
+          <p data-i18n="wu.iter1.body">The first admin dashboard mixed the overall summary with full financial detail in the same view. Feedback from a product stakeholder named the problem: <em>home is not the same as a module’s detail view.</em> I adjusted the model so Home showed only summaries and entry points, leaving detail inside each module.</p>
+
+          <div class="wu-compare-pair">
+            <figure class="wu-compare-shot">
+              <img src="../assets/images/projects/widdyup/admin-home-before.png" alt="" data-i18n-attr="alt:wu.iter1.beforeAlt" />
+              <figcaption data-i18n="wu.iter.before">Before</figcaption>
+            </figure>
+            <figure class="wu-compare-shot">
+              <img src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.iter1.afterAlt" />
+              <figcaption data-i18n="wu.iter.after">After</figcaption>
+            </figure>
+          </div>
+          <p class="wu-compare-caption" data-i18n="wu.iter1.caption">Resulting principle: the dashboard never duplicates a module’s detail — it only summarizes and links.</p>
+        </div>
+
+        <div class="wu-iter-card">
+          <div class="wu-iter-label wu-iter-label--indigo" data-i18n="wu.iter2.label">Iteration 02 — Portfolio vs. Money</div>
+          <p data-i18n="wu.iter2.body">Second iteration: separate the student’s “achievements profile” (Portfolio) from their financial information (Money). Mixing them created a confusing experience with the wrong tone.</p>
+
+          <div class="wu-split">
+            <div class="wu-split-card wu-split-card--mint">
+              <h4>Portfolio</h4>
+              <p data-i18n="wu.iter2.portfolio">"This is me" — zero financial content.</p>
+              <img src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.portfolioAlt" />
+            </div>
+            <div class="wu-split-card wu-split-card--indigo">
+              <h4>Money</h4>
+              <p data-i18n="wu.iter2.money">"I'm funding experiences" — financial only.</p>
+              <img src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.moneyAlt" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS & AI -->
+  <section class="wu-section wu-section--tight-top" aria-labelledby="wu-tools">
+    <div class="wu-shell">
+      <div class="wu-kicker" data-i18n="wu.tools.kicker">Process — tools and AI</div>
+      <h2 class="wu-title" id="wu-tools" data-i18n="wu.tools.title">An AI-supported flow to reach validation fast</h2>
+      <p class="wu-lede" style="margin-bottom:48px;max-width:700px" data-i18n="wu.tools.lede">The client had a tight deadline for this delivery. Leaning on AI tools at every stage sped up screen production and got us to the first client-facing validation on time.</p>
+
+      <div class="wu-tools">
+        <div class="wu-tool">
+          <div class="wu-tool-step wu-tool-step--indigo" data-i18n="wu.tools.s1">01 · DOCUMENTATION</div>
+          <h3>Claude Cowork</h3>
+          <p data-i18n="wu.tools.s1d">Meetings, briefs, and transcripts centralized — project context available throughout the process.</p>
+        </div>
+        <div class="wu-tool">
+          <div class="wu-tool-step wu-tool-step--teal" data-i18n="wu.tools.s2">02 · EARLY PROTOTYPING</div>
+          <h3>Figma Make + Make Kit</h3>
+          <p data-i18n="wu.tools.s2d">Fast screen exploration in Figma Make, with a custom Make Kit to keep consistency across screens.</p>
+        </div>
+        <div class="wu-tool">
+          <div class="wu-tool-step wu-tool-step--accent" data-i18n="wu.tools.s3">03 · ITERATION &amp; COLLABORATION</div>
+          <h3>Figma Design</h3>
+          <p data-i18n="wu.tools.s3d">Collaborative refinement and iteration with the client on designs already validated in Make.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL SYSTEM -->
+  <section class="wu-section wu-section--tight-top" aria-labelledby="wu-system">
+    <div class="wu-shell">
+      <div class="wu-kicker" data-i18n="wu.system.kicker">Visual system</div>
+      <h2 class="wu-title" id="wu-system" data-i18n="wu.system.title">A system built to scale fast</h2>
+
+      <div class="wu-system-grid">
+        <div>
+          <div class="wu-system-label" data-i18n="wu.system.color">Color</div>
+          <div class="wu-swatches">
+            <div class="wu-swatch" style="background:#4F46E5"></div>
+            <div class="wu-swatch" style="background:#0EA5A0"></div>
+            <div class="wu-swatch wu-swatch--paper"></div>
+            <div class="wu-swatch" style="background:#F2C94C"></div>
+          </div>
+          <div class="wu-system-note" data-i18n="wu.system.colorNote">Indigo · Teal · Off-white · Coral (occasional accent)</div>
+        </div>
+        <div>
+          <div class="wu-system-label" data-i18n="wu.system.type">Typography</div>
+          <div class="wu-type-display">Sora</div>
+          <div class="wu-type-body" data-i18n="wu.system.typeBody">DM Sans — body text</div>
+        </div>
+        <div>
+          <div class="wu-system-label" data-i18n="wu.system.integrations">Integrations inside the module</div>
+          <div class="wu-pills">
+            <div class="wu-pill">Stripe</div>
+            <div class="wu-pill">QuickBooks</div>
+            <div class="wu-pill">Google Workspace</div>
+            <div class="wu-pill">CutTime</div>
+          </div>
+          <div class="wu-system-note" data-i18n="wu.system.integrationsNote">Visible inside each module — never a separate module.</div>
+        </div>
+      </div>
+
+      <div class="wu-system-label" data-i18n="wu.system.library">Component library</div>
+      <div class="wu-library">
+        <div class="wu-lib-cell">
+          <div class="wu-btn-demo">
+            <div class="wu-demo-primary" data-i18n="wu.system.btnPrimary">New payment task</div>
+            <div class="wu-demo-secondary" data-i18n="wu.system.btnSecondary">Remind</div>
+          </div>
+          <span data-i18n="wu.system.buttons">Buttons</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-status-demo">
+            <div class="wu-status wu-status--paid">Paid</div>
+            <div class="wu-status wu-status--pending">Pending</div>
+            <div class="wu-status wu-status--overdue">Overdue</div>
+          </div>
+          <span data-i18n="wu.system.states">States</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-avatars">
+            <div class="wu-avatar wu-avatar--indigo">ER</div>
+            <div class="wu-avatar wu-avatar--pink">TM</div>
+            <div class="wu-avatar wu-avatar--peach">SK</div>
+          </div>
+          <span data-i18n="wu.system.avatars">Avatars</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-progress-label" data-i18n="wu.system.progressLabel">59% collected</div>
+          <div class="wu-progress-track"><div class="wu-progress-fill"></div></div>
+          <span data-i18n="wu.system.progress">Progress bar</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-input-demo" data-i18n="wu.system.input">Search members…</div>
+          <span>Input</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-metric-card">
+            <small data-i18n="wu.system.metricLabel">Season collected</small>
+            <b>$8,450</b>
+          </div>
+          <span data-i18n="wu.system.metric">Accent card</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-tabs-demo">
+            <span class="is-active" data-i18n="wu.system.tabAll">All</span>
+            <span data-i18n="wu.system.tabPaid">Paid</span>
+            <span data-i18n="wu.system.tabOverdue">Overdue</span>
+          </div>
+          <span>Tabs</span>
+        </div>
+        <div class="wu-lib-cell">
+          <div class="wu-notif" aria-hidden="true">
+            <div class="wu-notif-box"></div>
+            <div class="wu-notif-badge">3</div>
+          </div>
+          <span data-i18n="wu.system.notif">Notification</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="wu-result" aria-labelledby="wu-result">
+    <div class="wu-shell">
+      <div class="wu-kicker wu-kicker--on-teal" data-i18n="wu.result.kicker">Result</div>
+      <h2 class="wu-title" id="wu-result" data-i18n="wu.result.title">From idea to client validation</h2>
+
+      <div class="wu-result-collage">
+        <img class="wu-shot-1" src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.result.shotAdmin" />
+        <img class="wu-shot-2" src="../assets/images/projects/widdyup/money-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMoney" />
+        <img class="wu-shot-3" src="../assets/images/projects/widdyup/messages-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMessages" />
+        <img class="wu-shot-4" src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotAdminMobile" />
+        <img class="wu-shot-5" src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotMoneyMobile" />
+      </div>
+
+      <div class="wu-result-grid">
+        <div>
+          <div class="wu-deliver-label" data-i18n="wu.result.deliverables">Deliverables</div>
+          <div class="wu-deliver-list">
+            <div class="wu-deliver-track" aria-hidden="true"></div>
+            <div class="wu-deliver-fill" aria-hidden="true"></div>
+            <ul class="wu-deliver-items">
+              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d1">Information architecture</span></li>
+              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d2">User flows — admin / parent / student</span></li>
+              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d3">Mid-fi → hi-fi mockups, no wireframe stage</span></li>
+              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d4">Clickable prototype for client validation</span></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p class="wu-result-copy" data-i18n="wu.result.copy">The challenge wasn’t only visual. It was translating a modular business model — free layer plus independent upsells — into an information hierarchy a non-technical user could understand in seconds, fast enough to reach real client validation before writing a line of production code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="wu-close" aria-labelledby="wu-close">
+    <div class="wu-shell">
+      <h2 class="wu-title" id="wu-close" data-i18n="wu.close.title">Validate the model before you build the product.</h2>
+      <p class="wu-lede" data-i18n="wu.close.lede">A modular fundraising platform, designed end-to-end and put in front of real clients — without waiting on production engineering.</p>
+      <div class="wu-actions">
+        <a class="btn btn--primary" href="../index.html#projects" data-i18n="wu.close.more">See more work</a>
+        <a class="btn btn--secondary" href="mailto:andres.betancourt.di@outlook.com" data-i18n="wu.close.contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+  <h2 class="footer-cta" data-i18n="footer.cta">Let's work together!</h2>
+  <div class="footer-links">
+    <div class="footer-icons">
+      <a class="icon-btn" href="mailto:andres.betancourt.di@outlook.com" data-i18n-attr="aria-label:footer.email.label">
+        <img src="../assets/icons/email.svg" alt="" width="16" height="16" />
+      </a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/andres-betancourt-06604a171/" target="_blank" rel="noopener noreferrer" data-i18n-attr="aria-label:footer.linkedin.label">
+        <img src="../assets/icons/linkedin.svg" alt="" width="16" height="16" />
+      </a>
+    </div>
+    <p class="copyright">© <span id="copyright-year">2026</span> Andrés Betancourt</p>
+  </div>
+</footer>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/i18n-widdyup.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

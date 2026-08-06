@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;background:#F7F6F3;}
+    a{color:#4F46E5;text-decoration:underline;}
+    a:hover{color:#3B32B8;}
+    input[type=range]{-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:rgba(255,255,255,0.55);outline:none;}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.35);cursor:pointer;}
+    input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#ffffff;border:none;box-shadow:0 2px 10px rgba(0,0,0,0.35);cursor:pointer;}
+    @keyframes icon-pulse{0%,100%{transform:scale(1);opacity:0.85;}50%{transform:scale(1.12);opacity:1;}}
+    @keyframes icon-fade{0%,100%{opacity:0.55;}50%{opacity:1;}}
+    @keyframes bar-rise{0%,100%{transform:scaleY(0.82);}50%{transform:scaleY(1);}}
+    @keyframes line-grow{0%,8%{transform:scaleY(0);}63%,86%{transform:scaleY(1);}94%,100%{transform:scaleY(0);}}
+    @keyframes node-fill-1{0%,8%{background:transparent;transform:scale(1);}12%{background:#04302D;transform:scale(1.35);}18%,86%{background:#04302D;transform:scale(1);}92%,100%{background:transparent;transform:scale(1);}}
+    @keyframes node-fill-2{0%,23%{background:transparent;transform:scale(1);}27%{background:#04302D;transform:scale(1.35);}33%,86%{background:#04302D;transform:scale(1);}92%,100%{background:transparent;transform:scale(1);}}
+    @keyframes node-fill-3{0%,38%{background:transparent;transform:scale(1);}42%{background:#04302D;transform:scale(1.35);}48%,86%{background:#04302D;transform:scale(1);}92%,100%{background:transparent;transform:scale(1);}}
+    @keyframes node-fill-4{0%,53%{background:transparent;transform:scale(1);}57%{background:#04302D;transform:scale(1.35);}63%,86%{background:#04302D;transform:scale(1);}92%,100%{background:transparent;transform:scale(1);}}
+    input[type=range]:focus-visible{outline:3px solid #16162A;outline-offset:4px;}
+    @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;}}
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<div style="font-family:'DM Sans',sans-serif;color:#16162A;background:#F7F6F3;overflow-x:hidden;">
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="background:#4F46E5;padding:clamp(56px,8vw,96px) clamp(24px,6vw,80px) clamp(80px,10vw,140px);position:relative;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;color:#99F1E8;text-transform:uppercase;margin-bottom:20px;">Case study de producto</div>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(48px,8vw,92px);line-height:0.96;color:#ffffff;margin:0 0 24px;letter-spacing:-0.01em;">WiddyUp</h1>
+      <p style="font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,28px);line-height:1.35;color:#D9F9F4;margin:0 0 48px;max-width:720px;">Diseñar la capa financiera de un ecosistema de fundraising escolar — validado con clientes reales antes de escribir una línea de producción.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,0.18);border-radius:16px;overflow:hidden;margin-bottom:64px;max-width:1000px;">
+        <div style="background:#453EDC;padding:24px 28px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#99F1E8;text-transform:uppercase;margin-bottom:8px;">Producto</div>
+          <div style="font-size:15px;line-height:1.5;color:#EFEEFF;">Fundraising y finanzas operativas para programas de artes escénicas escolares.</div>
+        </div>
+        <div style="background:#453EDC;padding:24px 28px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#99F1E8;text-transform:uppercase;margin-bottom:8px;">Mi rol</div>
+          <div style="font-size:15px;line-height:1.5;color:#EFEEFF;">Product design end-to-end: research, arquitectura, flujos, hi-fi y prototipo.</div>
+        </div>
+        <div style="background:#453EDC;padding:24px 28px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#99F1E8;text-transform:uppercase;margin-bottom:8px;">Reto</div>
+          <div style="font-size:15px;line-height:1.5;color:#EFEEFF;">Validar un modelo modular antes de invertir en desarrollo.</div>
+        </div>
+        <div style="background:#453EDC;padding:24px 28px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#99F1E8;text-transform:uppercase;margin-bottom:8px;">Restricción</div>
+          <div style="font-size:15px;line-height:1.5;color:#EFEEFF;">Plazo ajustado para un prototipo creíble, listo para entrevistas.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1200px;margin:0 auto;position:relative;height:clamp(340px,42vw,460px);">
+      <img src="uploads/pasted-1786032666377-0.png" alt="Dashboard admin — vista mobile" style="position:absolute;left:6%;top:0;width:min(230px,26vw);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,0.35);transform:rotate(-6deg);border:6px solid #ffffff;" />
+      <img src="uploads/pasted-1786032695886-0.png" alt="Vista Money del estudiante — mobile" style="position:absolute;left:32%;top:6%;width:min(230px,26vw);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,0.4);transform:rotate(4deg);z-index:2;border:6px solid #ffffff;" />
+      <div style="position:absolute;left:60%;top:2%;width:min(260px,30vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,0.35);transform:rotate(-3deg);border:6px solid #ffffff;">
+        <image-slot id="hero-video-slot" shape="rect" placeholder="VIDEO: walkthrough del prototipo, 15-20s"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXTO -->
+  <section data-screen-label="Contexto" style="background:#F7F6F3;padding:clamp(72px,9vw,120px) clamp(24px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#0EA5A0;text-transform:uppercase;margin-bottom:18px;">Contexto</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 28px;max-width:760px;">Herramientas dispersas, visibilidad cero</h2>
+      <p style="font-size:18px;line-height:1.65;max-width:680px;color:#3A3A50;margin:0 0 56px;">Bandas, orquestas y equipos de danza escolares manejan fundraising y cobro de cuotas con hojas de cálculo, mensajes de texto y efectivo. Los directores de programa pierden horas en seguimiento manual; estudiantes y familias no saben con claridad qué deben ni para qué.</p>
+
+      <div style="background:#0EA5A0;border-radius:20px;padding:clamp(36px,5vw,56px);max-width:800px;margin-bottom:64px;">
+        <p style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.4;color:#ffffff;margin:0 0 20px;">"El producto necesita sentirse como un ecosistema tipo Slack: una capa gratuita de mensajería y perfiles, con módulos de pago que se sienten independientes entre sí — no obligatorios en conjunto."</p>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.06em;color:#04302D;text-transform:uppercase;">Insight de negocio clave</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;max-width:1000px;">
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Administrador</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Director de programa. Vista back-end, gestión del grupo.</div>
+        </div>
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Miembro / estudiante</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Gen Z/Alpha, 14–18 años. Dashboard customer-facing, nativo a como ya usan tecnología.</div>
+        </div>
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Padre / acudiente</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Login separado, vinculado al perfil del estudiante — por cumplimiento en comunicación con menores.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA DE INFORMACIÓN -->
+  <section data-screen-label="Arquitectura" style="background:#F7F6F3;padding:0 clamp(24px,6vw,80px) clamp(80px,9vw,120px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#0EA5A0;text-transform:uppercase;margin-bottom:18px;">Proceso — arquitectura de información</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 28px;max-width:760px;">Cuatro módulos, una jerarquía clara</h2>
+      <p style="font-size:18px;line-height:1.65;max-width:680px;color:#3A3A50;margin:0 0 48px;">Antes de dibujar una sola pantalla, definí los cuatro módulos del producto y cómo se relacionan entre sí.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:28px;">
+        <div style="background:#4F46E5;border-radius:20px;padding:32px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#ffffff;">Smart Dashboard</div>
+          <div aria-hidden="true" style="position:relative;width:48px;height:38px;">
+            <div style="position:absolute;left:0;top:9px;width:30px;height:24px;border-radius:6px;background:rgba(255,255,255,0.35);"></div>
+            <div style="position:absolute;left:16px;top:0;width:30px;height:24px;border-radius:6px;background:rgba(255,255,255,0.95);animation:icon-pulse 3.2s ease-in-out infinite;"></div>
+          </div>
+          <div style="font-size:14px;line-height:1.55;color:#E4E2FB;">El sistema nervioso central. Dos vistas: administrador y miembro.</div>
+        </div>
+        <div style="background:#0EA5A0;border-radius:20px;padding:32px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#ffffff;">Financial Workflow</div>
+          <div aria-hidden="true" style="display:flex;align-items:flex-end;gap:5px;height:38px;">
+            <div style="width:9px;height:16px;border-radius:3px;background:rgba(255,255,255,0.5);transform-origin:bottom;animation:bar-rise 2.4s ease-in-out infinite;"></div>
+            <div style="width:9px;height:26px;border-radius:3px;background:rgba(255,255,255,0.75);transform-origin:bottom;animation:bar-rise 2.4s ease-in-out infinite 0.25s;"></div>
+            <div style="width:9px;height:38px;border-radius:3px;background:rgba(255,255,255,0.95);transform-origin:bottom;animation:bar-rise 2.4s ease-in-out infinite 0.5s;"></div>
+          </div>
+          <div style="font-size:14px;line-height:1.55;color:#04302D;">El núcleo a validar. Setup, mantenimiento, cierre de temporada.</div>
+        </div>
+        <div style="background:{{accent}};border-radius:20px;padding:32px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#3A1E12;">Fundraising Workflow</div>
+          <div aria-hidden="true" style="width:48px;height:36px;border:2.5px solid rgba(58,30,18,0.4);border-radius:8px;display:flex;align-items:center;justify-content:center;animation:icon-pulse 3.2s ease-in-out infinite 0.3s;">
+            <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:12px solid #3A1E12;margin-left:2px;"></div>
+          </div>
+          <div style="font-size:14px;line-height:1.55;color:#5C2E1C;">La cuña de entrada. Storytelling en video, no fundraising legacy.</div>
+        </div>
+        <div style="background:#3730A3;border-radius:20px;padding:32px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#ffffff;">Communication Module</div>
+          <div aria-hidden="true" style="display:flex;flex-direction:column;gap:6px;width:46px;">
+            <div style="height:5px;width:100%;border-radius:3px;background:rgba(255,255,255,0.9);animation:icon-fade 2.6s ease-in-out infinite;"></div>
+            <div style="height:5px;width:75%;border-radius:3px;background:rgba(255,255,255,0.7);animation:icon-fade 2.6s ease-in-out infinite 0.3s;"></div>
+            <div style="height:5px;width:50%;border-radius:3px;background:rgba(255,255,255,0.5);animation:icon-fade 2.6s ease-in-out infinite 0.6s;"></div>
+          </div>
+          <div style="font-size:14px;line-height:1.55;color:#DCD9F5;">Feed ligero tipo Notion. El primero en recortarse si falta tiempo.</div>
+        </div>
+      </div>
+
+      <p style="font-size:16px;line-height:1.6;max-width:680px;color:#3A3A50;margin:0 0 48px;">Si algo debía cortarse por tiempo, Comunicación se sacrificaba primero. Dashboard, Financiero y Fundraising eran innegociables.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;">
+        <div style="background:#4F46E5;border-radius:18px;padding:28px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(48px,6vw,68px);color:#ffffff;line-height:1;">4</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#D9D6FA;text-transform:uppercase;margin-top:8px;">Módulos</div>
+        </div>
+        <div style="background:#0EA5A0;border-radius:18px;padding:28px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(48px,6vw,68px);color:#ffffff;line-height:1;">13</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#04302D;text-transform:uppercase;margin-top:8px;">Pantallas hi-fi</div>
+        </div>
+        <div style="background:{{accent}};border-radius:18px;padding:28px;text-align:center;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(48px,6vw,68px);color:#3A1E12;line-height:1;">3</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#5C2E1C;text-transform:uppercase;margin-top:8px;">Flujos de usuario</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USER FLOWS -->
+  <section data-screen-label="User flows" style="background:#4F46E5;padding:clamp(72px,9vw,120px) clamp(24px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#99F1E8;text-transform:uppercase;margin-bottom:18px;">Proceso — user flows</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;color:#ffffff;margin:0 0 40px;max-width:760px;">Tres flujos, tres fricciones distintas</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:56px;">
+        <div style="background:#ffffff;border-radius:20px;padding:28px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#4F46E5;margin-bottom:16px;">01 · ADMINISTRADOR</div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#4F46E5;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Elegir módulos</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Fundraising, Financiero, o ambos.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#4F46E5;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Invitar miembros</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">QR o link, sin fricción.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#4F46E5;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Configurar cobros</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Monto y fecha límite por tarea.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#4F46E5;flex-shrink:0;"></div>
+              </div>
+              <div><div style="font-weight:700;font-size:14px;color:#16162A;">Seguimiento automático</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Recordatorios y aprobaciones desde el dashboard.</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#ffffff;border-radius:20px;padding:28px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#0EA5A0;margin-bottom:16px;">02 · ESTUDIANTE</div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#0EA5A0;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Abrir invitación</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Link o QR, grupo ya identificado.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#0EA5A0;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Crear cuenta</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Solo nombre y correo.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#0EA5A0;flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Ver balance y fundraising</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Próximo pago y progreso del grupo.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#0EA5A0;flex-shrink:0;"></div>
+              </div>
+              <div><div style="font-weight:700;font-size:14px;color:#16162A;">Pagar</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Apple Pay o tarjeta, confirmación instantánea.</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#ffffff;border-radius:20px;padding:28px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{accent}};flex-shrink:0;"></span><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#16162A;">03 · PADRE / ACUDIENTE</span></div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:{{accent}};flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Recibir invitación</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Vinculada al perfil del estudiante.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:{{accent}};flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Crear cuenta propia</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Login separado, por cumplimiento con menores.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:{{accent}};flex-shrink:0;"></div>
+                <div style="width:2px;flex:1;background:#E4E2DC;"></div>
+              </div>
+              <div style="padding-bottom:18px;"><div style="font-weight:700;font-size:14px;color:#16162A;">Ver balance del hijo</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Actividad y pagos pendientes.</div></div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <div style="width:10px;height:10px;border-radius:50%;background:{{accent}};flex-shrink:0;"></div>
+              </div>
+              <div><div style="font-weight:700;font-size:14px;color:#16162A;">Pagar en su nombre</div><div style="font-size:13px;color:#4A4A60;margin-top:2px;">Mismo flujo de pago, distinto login.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;margin-bottom:20px;text-align:center;">
+        <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(56px,9vw,110px);color:#ffffff;line-height:0.9;">&lt;30s</div>
+        <div style="font-size:14px;font-weight:700;letter-spacing:0.08em;color:#D9F9F4;text-transform:uppercase;max-width:220px;text-align:left;">Onboarding del estudiante, de principio a fin</div>
+      </div>
+      <p style="font-size:16px;line-height:1.6;color:#D9D6FA;max-width:600px;margin:0 auto;text-align:center;">Cualquier paso de más significa perder al estudiante. Se validó que el flujo debía resolverse en menos de medio minuto.</p>
+    </div>
+  </section>
+
+  <!-- MID-FI A HI-FI -->
+  <section data-screen-label="Mid-fi a hi-fi" style="background:#F7F6F3;padding:clamp(72px,9vw,120px) clamp(24px,6vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#0EA5A0;text-transform:uppercase;margin-bottom:18px;">Proceso — de mid-fi a hi-fi</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 28px;max-width:760px;">Salté los wireframes. Iteré directo en Figma.</h2>
+      <p style="font-size:18px;line-height:1.65;max-width:700px;color:#3A3A50;margin:0 0 20px;">Dado el plazo, salté la etapa de wireframes de baja fidelidad e iteré directamente en mid/hi-fi, usando comentarios de stakeholders como ciclo de feedback rápido — check-ins de 15 minutos.</p>
+      <div style="display:flex;flex-direction:column;gap:28px;">
+
+        <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:24px;padding:clamp(28px,4vw,44px);">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.1em;color:#0EA5A0;text-transform:uppercase;margin-bottom:14px;">Iteración 01 — Home vs. detalle de módulo</div>
+          <p style="font-size:16px;line-height:1.65;max-width:700px;color:#3A3A50;margin:0 0 28px;">Primera versión del dashboard admin mezclaba el resumen general con el detalle financiero completo en la misma vista. El feedback de un stakeholder de producto identificó el problema: <em>home no es lo mismo que la vista de detalle de un módulo.</em> Ajusté el modelo para que Home mostrara solo resúmenes y puntos de entrada, dejando el detalle dentro de cada módulo.</p>
+
+          <div style="position:relative;width:100%;max-width:640px;aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.16);margin-bottom:14px;">
+            <img src="uploads/pasted-1786035073915-0.png" alt="Después — home con resumen y entry points" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;" />
+            <div style="position:absolute;inset:0;overflow:hidden;clip-path:inset(0 {{sliderPosInv}}% 0 0);">
+              <img src="uploads/pasted-1786033974533-0.png" alt="Antes — dashboard admin" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;" />
+            </div>
+            <div style="position:absolute;top:0;bottom:0;left:{{sliderPos}}%;width:3px;background:#ffffff;box-shadow:0 0 12px rgba(0,0,0,0.4);"></div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(22,22,42,0.75);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;">Antes</div>
+            <div style="position:absolute;top:16px;right:16px;background:rgba(14,165,160,0.9);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:100px;">Después</div>
+            <input type="range" min="0" max="100" value="{{sliderPos}}" onChange="{{onSliderChange}}" aria-label="Comparar antes y después del dashboard admin" style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:70%;" />
+          </div>
+          <p style="font-size:14px;color:#6A6A80;max-width:640px;margin:0;">Arrastra para comparar. Principio resultante: el dashboard nunca duplica el detalle de un módulo, solo lo resume y enlaza.</p>
+        </div>
+
+        <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:24px;padding:clamp(28px,4vw,44px);">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.1em;color:#4F46E5;text-transform:uppercase;margin-bottom:14px;">Iteración 02 — Portfolio vs. Money</div>
+          <p style="font-size:16px;line-height:1.65;max-width:700px;color:#3A3A50;margin:0 0 28px;">Segunda iteración: separar el "perfil de logros" del estudiante (Portfolio) de su información financiera (Money). Mezclarlos generaba una experiencia confusa y con tono equivocado.</p>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:640px;">
+            <div style="background:#99F1E8;border-radius:20px;padding:24px;">
+              <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#065F5C;margin-bottom:4px;">Portfolio</div>
+              <div style="font-size:13px;color:#0A6B67;margin-bottom:16px;">"Esto soy yo" — cero contenido financiero.</div>
+              <img src="uploads/pasted-1786035420847-0.png" alt="Vista Portfolio del estudiante" style="width:100%;border-radius:14px;display:block;" />
+            </div>
+            <div style="background:#4F46E5;border-radius:20px;padding:24px;">
+              <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#ffffff;margin-bottom:4px;">Money</div>
+              <div style="font-size:13px;color:#D9D6FA;margin-bottom:16px;">"Estoy financiando experiencias" — solo lo financiero.</div>
+              <img src="uploads/pasted-1786032695886-0.png" alt="Vista Money del estudiante" style="width:100%;border-radius:14px;display:block;" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HERRAMIENTAS Y AI -->
+  <section data-screen-label="Herramientas y AI" style="background:#F7F6F3;padding:0 clamp(24px,6vw,80px) clamp(80px,9vw,120px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#0EA5A0;text-transform:uppercase;margin-bottom:18px;">Proceso — herramientas y AI</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 28px;max-width:760px;">Un flujo apoyado en AI para llegar rápido a validación</h2>
+      <p style="font-size:18px;line-height:1.65;max-width:700px;color:#3A3A50;margin:0 0 48px;">El cliente tenía un plazo ajustado para esta entrega. Apoyarme en herramientas de AI en cada etapa del proceso permitió agilizar y acelerar la producción de las pantallas, y llegar a tiempo al primer acercamiento y validación que el cliente quería hacer con sus propios clientes.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;">
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#4F46E5;margin-bottom:12px;">01 · DOCUMENTACIÓN</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Claude Cowork</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Reuniones, briefs y transcripts centralizados — contexto del proyecto accesible durante todo el proceso.</div>
+        </div>
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#0EA5A0;margin-bottom:12px;">02 · PROTOTIPADO INICIAL</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Figma Make + Make Kit</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Exploración rápida de pantallas en Figma Make, con un Make Kit propio para mantener consistencia entre pantallas.</div>
+        </div>
+        <div style="border-top:2px solid #16162A;padding-top:16px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{accent}};flex-shrink:0;"></span><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:#16162A;">03 · ITERACIÓN Y COLABORACIÓN</span></div>
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;">Figma Design</div>
+          <div style="font-size:15px;line-height:1.55;color:#4A4A60;">Refinamiento e iteración colaborativa con el cliente sobre los diseños ya validados en Make.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SISTEMA VISUAL -->
+  <section data-screen-label="Sistema visual" style="background:#F7F6F3;padding:0 clamp(24px,6vw,80px) clamp(80px,9vw,120px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#0EA5A0;text-transform:uppercase;margin-bottom:18px;">Sistema visual</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 40px;max-width:760px;">Un sistema construido para escalar rápido</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;margin-bottom:56px;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#6B6B80;text-transform:uppercase;margin-bottom:14px;">Color</div>
+          <div style="display:flex;gap:10px;">
+            <div style="width:56px;height:56px;border-radius:12px;background:#4F46E5;"></div>
+            <div style="width:56px;height:56px;border-radius:12px;background:#0EA5A0;"></div>
+            <div style="width:56px;height:56px;border-radius:12px;background:#F7F6F3;border:1px solid #E4E2DC;"></div>
+            <div style="width:56px;height:56px;border-radius:12px;background:{{accent}};"></div>
+          </div>
+          <div style="font-size:12px;color:#6B6B80;margin-top:10px;">Indigo · Teal · Off-white · Coral (acento ocasional)</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#6B6B80;text-transform:uppercase;margin-bottom:14px;">Tipografía</div>
+          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:36px;line-height:1;">Sora</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:20px;color:#4A4A60;margin-top:6px;">DM Sans — body text</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#6B6B80;text-transform:uppercase;margin-bottom:14px;">Integraciones dentro del módulo</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;">Stripe</div>
+            <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;">QuickBooks</div>
+            <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;">Google Workspace</div>
+            <div style="background:#ffffff;border:1px solid #E4E2DC;border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;">CutTime</div>
+          </div>
+          <div style="font-size:12px;color:#6B6B80;margin-top:10px;">Visibles dentro de cada módulo — nunca un módulo aparte.</div>
+        </div>
+      </div>
+
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#6B6B80;text-transform:uppercase;margin-bottom:14px;">Librería de componentes</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#E4E2DC;border:1px solid #E4E2DC;border-radius:16px;overflow:hidden;">
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <div style="background:#4F46E5;color:#ffffff;font-size:14px;font-weight:600;padding:10px 18px;border-radius:10px;">Nueva tarea de pago</div>
+            <div style="background:#ffffff;color:#4F46E5;font-size:14px;font-weight:600;padding:9px 17px;border-radius:10px;border:1.5px solid #4F46E5;">Recordar</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Botones</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <div style="background:#CFF3EE;color:#065F5C;font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;">Paid</div>
+            <div style="background:#EDEDF2;color:#4A4A60;font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;">Pending</div>
+            <div style="background:#FBDCD4;color:#9A2E1B;font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;">Overdue</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Estados</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="display:flex;gap:8px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:#E4E2FB;color:#4F46E5;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">ER</div>
+            <div style="width:40px;height:40px;border-radius:50%;background:#FBDDEC;color:#9A2C63;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">TM</div>
+            <div style="width:40px;height:40px;border-radius:50%;background:#FBE4D4;color:#9A4D1B;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;">SK</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Avatares</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="font-size:13px;font-weight:600;color:#16162A;margin-bottom:8px;">59% collected</div>
+          <div style="width:100%;height:8px;background:#EDEDF2;border-radius:100px;overflow:hidden;">
+            <div style="width:59%;height:100%;background:#0EA5A0;border-radius:100px;"></div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Barra de progreso</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="background:#F7F6F3;border:1px solid #E4E2DC;border-radius:100px;padding:10px 18px;font-size:14px;color:#6B6B80;">Buscar miembros…</div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Input</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="background:#ffffff;border:1px solid #E4E2DC;border-left:3px solid #0EA5A0;border-radius:10px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:#6B6B80;text-transform:uppercase;">Season collected</div>
+            <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:#16162A;margin-top:4px;">$8,450</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Card con acento</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="display:flex;gap:20px;font-size:14px;">
+            <div style="color:#4F46E5;font-weight:700;padding-bottom:8px;border-bottom:2px solid #4F46E5;">Todos</div>
+            <div style="color:#6B6B80;padding-bottom:8px;">Pagado</div>
+            <div style="color:#6B6B80;padding-bottom:8px;">Vencido</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Tabs</div>
+        </div>
+
+        <div style="background:#ffffff;padding:28px;display:flex;flex-direction:column;min-height:150px;">
+          <div style="position:relative;width:40px;height:40px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:#EDEDF2;"></div>
+            <div style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:#E4453C;color:#ffffff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">3</div>
+          </div>
+          <div style="font-size:12px;font-weight:700;color:#16162A;margin-top:auto;padding-top:16px;">Notificación</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section data-screen-label="Resultado" style="background:#0EA5A0;padding:clamp(72px,9vw,120px) clamp(24px,6vw,80px) clamp(56px,7vw,80px);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="font-weight:700;font-size:13px;letter-spacing:0.14em;color:#04302D;text-transform:uppercase;margin-bottom:18px;">Resultado</div>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);line-height:1.1;color:#ffffff;margin:0 0 48px;max-width:760px;">De la idea a la validación con clientes</h2>
+
+      <div style="position:relative;width:100%;height:clamp(460px,54vw,680px);margin-bottom:32px;">
+        <img src="uploads/pasted-1786035073915-0.png" alt="Dashboard admin desktop" style="position:absolute;left:0%;top:2%;width:min(340px,32vw);border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,0.3);transform:rotate(-4deg);border:5px solid #ffffff;" />
+        <img src="uploads/pasted-1786035054172-0.png" alt="Money desktop" style="position:absolute;left:27%;top:16%;width:min(320px,30vw);border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,0.3);transform:rotate(3deg);z-index:2;border:5px solid #ffffff;" />
+        <img src="uploads/pasted-1786032681350-0.png" alt="Messages desktop" style="position:absolute;left:53%;top:0%;width:min(300px,28vw);border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,0.3);transform:rotate(-2deg);border:5px solid #ffffff;" />
+        <img src="uploads/pasted-1786032666377-0.png" alt="Dashboard admin mobile" style="position:absolute;left:77%;top:6%;width:min(130px,13vw);border-radius:18px;box-shadow:0 24px 50px rgba(0,0,0,0.3);transform:rotate(6deg);z-index:2;border:5px solid #ffffff;" />
+        <img src="uploads/pasted-1786032695886-0.png" alt="Money mobile" style="position:absolute;left:36%;top:38%;width:min(130px,13vw);border-radius:18px;box-shadow:0 24px 50px rgba(0,0,0,0.3);transform:rotate(-5deg);z-index:2;border:5px solid #ffffff;" />
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;color:#04302D;text-transform:uppercase;margin-bottom:20px;">Entregables</div>
+          <div style="position:relative;">
+            <div aria-hidden="true" style="position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:rgba(4,48,45,0.15);"></div>
+            <div aria-hidden="true" style="position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:#04302D;transform-origin:top;animation:line-grow 6s ease-in-out infinite;"></div>
+            <div style="display:flex;flex-direction:column;gap:22px;position:relative;">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div aria-hidden="true" style="width:16px;height:16px;border-radius:50%;border:2px solid #04302D;flex-shrink:0;animation:node-fill-1 6s ease-in-out infinite;"></div>
+                <div style="font-size:15px;color:#04302D;font-weight:600;">Arquitectura de información</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div aria-hidden="true" style="width:16px;height:16px;border-radius:50%;border:2px solid #04302D;flex-shrink:0;animation:node-fill-2 6s ease-in-out infinite;"></div>
+                <div style="font-size:15px;color:#04302D;font-weight:600;">User flows — administrador / padre / estudiante</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div aria-hidden="true" style="width:16px;height:16px;border-radius:50%;border:2px solid #04302D;flex-shrink:0;animation:node-fill-3 6s ease-in-out infinite;"></div>
+                <div style="font-size:15px;color:#04302D;font-weight:600;">Mockups mid-fi → hi-fi, sin etapa de wireframes</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div aria-hidden="true" style="width:16px;height:16px;border-radius:50%;border:2px solid #04302D;flex-shrink:0;animation:node-fill-4 6s ease-in-out infinite;"></div>
+                <div style="font-size:15px;color:#04302D;font-weight:600;">Prototipo clickeable para validación con clientes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:16px;line-height:1.7;color:#04302D;margin:0;">El reto no fue solo visual. Fue traducir un modelo de negocio modular — capa gratuita más upsells independientes — en una jerarquía de información que un usuario no técnico entendiera en segundos, con la velocidad suficiente para llegar a validación real con clientes antes de escribir una línea de código de producción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#F7F6F3;padding:32px clamp(24px,6vw,80px);text-align:center;">
+    <div style="font-size:13px;color:#6B6B80;">WiddyUp — Case study de producto · 2026</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1400, &quot;height&quot;: 1200},
+  &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#F2C94C&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#F2C94C&quot;, &quot;#FB7A5D&quot;, &quot;#0EA5A0&quot;], &quot;section&quot;: &quot;Sistema visual&quot;},
+  &quot;sliderDefault&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 50, &quot;min&quot;: 0, &quot;max&quot;: 100, &quot;step&quot;: 1, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Antes / después&quot;}
+}">
+class Component extends DCLogic {
+  state = { sliderPos: undefined };
+  renderVals() {
+    const pos = this.state.sliderPos ?? (this.props.sliderDefault ?? 50);
+    return {
+      accent: this.props.accentColor ?? "#F2C94C",
+      sliderPos: pos,
+      sliderPosInv: 100 - pos,
+      onSliderChange: (e) => this.setState({ sliderPos: Number(e.target.value) }),
+    };
+  }
+}
+</script>
+</body>
+</html>
