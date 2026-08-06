@@ -1,0 +1,1028 @@
+/* ===================================================================
+   DESIGN TOKENS
+   Source: design-tokens.tokens.json (Figma "Design Tokens" export)
+
+   Two tiers:
+     Primitives (01-07) mirror the export one-to-one and keep the
+       Figma naming, so a re-export stays easy to diff against.
+     Semantics (08-09) are the role-based tokens the components read.
+       Component rules should reference these, not the primitives.
+
+   01. Color                05. Typography
+   02. Dimension scale      06. Elevation
+   03. Radius               07. Layout grid
+   04. Spacing              08. Semantic tokens
+                            09. Responsive semantic overrides
+   =================================================================== */
+
+/* --- 01. Color -----------------------------------------------------
+   Figma collection "Colors". The 500 step is each ramp's base color.
+   The neutrals are also the project's fixed brand tokens, so they are
+   named without a tier prefix. */
+:root {
+  /* Primary — navy */
+  --color-primary-50: #dfe5ec;
+  --color-primary-100: #c0cbd8;
+  --color-primary-200: #a0b1c5;
+  --color-primary-300: #718ba8;
+  --color-primary-400: #41648b;
+  --color-primary-500: #123d6e;
+  --color-primary-600: #0e3158;
+  --color-primary-700: #0b2542;
+  --color-primary-800: #07182c;
+  --color-primary-900: #040c16;
+
+  /* Secondary — teal */
+  --color-secondary-50: #e9f7f8;
+  --color-secondary-100: #ccf1f3;
+  --color-secondary-200: #99e2e7;
+  --color-secondary-300: #66d4da;
+  --color-secondary-400: #33c5ce;
+  --color-secondary-500: #00b7c2;
+  --color-secondary-600: #00929b;
+  --color-secondary-700: #006e74;
+  --color-secondary-800: #00494e;
+  --color-secondary-900: #002527;
+
+  /* Neutral */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f8f8f8;
+  --color-gray-100: #e4e4e5;
+  --color-gray-200: #d2d1d4;
+  --color-gray-300: #a6a4a8;
+  --color-gray-400: #8f8d93;
+  --color-gray-500: #8f8d93; /* the export repeats the 400 value here */
+  --color-gray-600: #656268;
+  --color-gray-700: #514f53;
+  --color-gray-800: #3c3b3e;
+  --color-gray-900: #28272a;
+
+  /* Standalone hues (Figma: "alternate 1 - off white" / "alternate 2 - red") */
+  --color-off-white: #f5f5f5;
+  --color-red: #fb1d61;
+
+  /* Alerts */
+  --color-success: #15ce73;
+  --color-informative: #6eb0f2;
+  --color-alert: #fc9403;
+  --color-error: #ba253c;
+}
+
+/* --- 02. Dimension scale -------------------------------------------
+   Figma collection "Scale" (scale.base.general). Radius and spacing
+   are both derived from these steps.
+   The export's "80" step carries the value 64, so it is left out here
+   as a duplicate of --scale-64 rather than guessed at. */
+:root {
+  --scale-0: 0;
+  --scale-2: 2px;
+  --scale-4: 4px;
+  --scale-6: 6px;
+  --scale-8: 8px;
+  --scale-12: 12px;
+  --scale-16: 16px;
+  --scale-20: 20px;
+  --scale-24: 24px;
+  --scale-32: 32px;
+  --scale-40: 40px;
+  --scale-56: 56px;
+  --scale-64: 64px;
+}
+
+/* --- 03. Radius ---------------------------------------------------- */
+:root {
+  --radius-none: var(--scale-0);
+  --radius-sm: var(--scale-2);
+  --radius-base: var(--scale-4);
+  --radius-md: var(--scale-6);
+  --radius-lg: var(--scale-8);
+  --radius-xl: var(--scale-12);
+  --radius-2xl: var(--scale-16);
+  --radius-3xl: var(--scale-24);
+  /* Outside the exported scale; needed for fully rounded chips. */
+  --radius-pill: 30px;
+}
+
+/* --- 04. Spacing ---------------------------------------------------
+   The exported scale skips 12px, so the few places that need it
+   reference --scale-12 directly. */
+:root {
+  --spacing-none: var(--scale-0);
+  --spacing-xxs: var(--scale-2);
+  --spacing-xs: var(--scale-4);
+  --spacing-s: var(--scale-8);
+  --spacing-md: var(--scale-16);
+  --spacing-lg: var(--scale-20);
+  --spacing-xl: var(--scale-24);
+  --spacing-2xl: var(--scale-32);
+  --spacing-3xl: var(--scale-40);
+}
+
+/* --- 05. Typography ------------------------------------------------
+   One family across every style; only size, line height, tracking and
+   weight vary. Regular and bold variants of a style share the same
+   metrics, so each size step is defined once and the weight is picked
+   at the usage site. Tracking is listed only where it is non-zero. */
+:root {
+  --font-family-base: 'DM Sans', sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Display — regular 400 / bold 700 */
+  --type-display-lg-size: 57px;
+  --type-display-lg-line-height: 64px;
+  --type-display-lg-tracking: -0.25px;
+  --type-display-md-size: 45px;
+  --type-display-md-line-height: 52px;
+  --type-display-sm-size: 36px;
+  --type-display-sm-line-height: 44px;
+
+  /* Headline — regular 400 / bold 700 */
+  --type-headline-lg-size: 32px;
+  --type-headline-lg-line-height: 40px;
+  --type-headline-md-size: 28px;
+  --type-headline-md-line-height: 36px;
+  --type-headline-sm-size: 24px;
+  --type-headline-sm-line-height: 32px;
+
+  /* Title — lg regular 400, md/sm regular 500, all bold 700 */
+  --type-title-lg-size: 22px;
+  --type-title-lg-line-height: 28px;
+  --type-title-md-size: 16px;
+  --type-title-md-line-height: 24px;
+  --type-title-md-tracking: 0.15px;
+  --type-title-sm-size: 14px;
+  --type-title-sm-line-height: 20px;
+
+  /* Label — semibold 600 */
+  --type-label-lg-size: 14px;
+  --type-label-lg-line-height: 20px;
+  --type-label-md-size: 12px;
+  --type-label-md-line-height: 16px;
+  --type-label-sm-size: 11px;
+  --type-label-sm-line-height: 16px;
+
+  /* Body — regular 400 / bold 700; the link variant adds an underline */
+  --type-body-lg-size: 16px;
+  --type-body-lg-line-height: 20px;
+  --type-body-md-size: 14px;
+  --type-body-md-line-height: 20px;
+  --type-body-sm-size: 12px;
+  --type-body-sm-line-height: 16px;
+
+  /* Button (Figma: componentes/boton) — bold 700 */
+  --type-button-size: 14px;
+  --type-button-line-height: 20px;
+  --type-button-tracking: 0.25px;
+}
+
+/* --- 06. Elevation -------------------------------------------------
+   Figma effect styles. Each is a two-layer shadow: a tight key shadow
+   at 30% opacity, then a wider ambient one at 15%. */
+:root {
+  --elevation-small: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-base: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-medium: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --elevation-large: 0 2px 3px rgba(0, 0, 0, 0.3), 0 6px 10px 4px rgba(0, 0, 0, 0.15);
+  --elevation-xl: 0 4px 4px rgba(0, 0, 0, 0.3), 0 8px 12px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* --- 07. Layout grid -----------------------------------------------
+   Figma grid styles, kept as reference values. The page lays sections
+   out with flex/grid rather than a rigid column system. */
+:root {
+  /* mobile 360 x 800 */
+  --grid-mobile-columns: 6;
+  --grid-mobile-gutter: var(--scale-16);
+  --grid-mobile-margin: var(--scale-16);
+
+  /* desktop 1366 x 768 */
+  --grid-desktop-columns: 12;
+  --grid-desktop-gutter: var(--scale-24);
+  --grid-desktop-margin: var(--scale-40);
+
+  /* desktop 1366 x 768 (menu + header) */
+  --grid-header-height: var(--scale-56);
+  --grid-header-logo-width: 78px;
+}
+
+/* --- 08. Semantic tokens -------------------------------------------
+   The brand roles below are fixed by the project brief: the names and
+   resolved values must not change. */
+:root {
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+  --color-accent: var(--color-red);
+  --color-bg-alt: var(--color-off-white);
+
+  --font-family: var(--font-family-base);
+
+  --shadow-large: var(--elevation-large);
+  /* Flat offset shadow for project cards; not one of the exported effects. */
+  --shadow-card: 4px 4px 4px rgba(0, 0, 0, 0.1);
+
+  /* Figma's 90deg rotation resolves to a left-to-right axis in CSS. */
+  --gradient-brand: linear-gradient(
+    90deg,
+    var(--color-primary-600) 0%,
+    var(--color-primary-900) 100%
+  );
+
+  --radius-card: var(--radius-lg);
+
+  /* Per-role sizes for this page, retuned at each breakpoint in 09.
+     They only partly line up with the exported type scale, so they
+     hold their own values instead of aliasing it. */
+  --font-size-display: clamp(22px, 7vw, 56px);   /* hero "I'm a [role]" */
+  --font-size-headline: 28px;  /* "Let's work together!" */
+  --font-size-section-body: 18px; /* 3D / motion intro paragraphs */
+  --font-size-hero-body: 16px; /* hero paragraph */
+  --font-size-kicker: 16px;    /* uppercase overline labels */
+  --font-size-nav: 16px;
+
+  --container-padding: var(--scale-16);
+  --section-gap: var(--scale-40);
+}
+
+/* --- 09. Responsive semantic overrides ----------------------------- */
+@media (min-width: 768px) {
+  :root {
+    --font-size-headline: 40px;
+    --font-size-section-body: 20px;
+    --font-size-hero-body: 18px;
+    --container-padding: var(--scale-40);
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --font-size-headline: 56px;
+    --font-size-section-body: 24px;
+    --font-size-hero-body: 24px;
+    --container-padding: 80px; /* no 80px step exists in the export */
+  }
+}
+
+/* ===================================================================
+   Reset
+   =================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-family);
+  color: var(--color-gray-900);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, h4, p { margin: 0; }
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--spacing-s) var(--spacing-md);
+  z-index: 100;
+}
+.skip-link:focus {
+  left: var(--spacing-md);
+  top: var(--spacing-md);
+}
+
+/* Focus visibility across all interactive elements */
+a:focus-visible,
+button:focus-visible,
+img:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-base);
+}
+
+/* ===================================================================
+   Shared components
+   =================================================================== */
+
+/* The button component lives in css/button.css, loaded alongside this
+   file, so the case studies can use it without the rest of this sheet. */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  font-weight: var(--font-weight-bold);
+}
+.pill-outline {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: var(--spacing-s) var(--spacing-md);
+  font-size: var(--type-label-md-size);
+}
+.pill-fill {
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+  padding: var(--spacing-s) var(--scale-12);
+  font-size: var(--type-label-sm-size);
+  font-weight: var(--font-weight-semibold);
+}
+
+.kicker {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-kicker);
+  letter-spacing: 1.92px;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+.kicker-invert { color: var(--color-white); }
+
+/* Horizontal scroll carousels: fade + edge indicator (dark sections only) */
+.scroll-fade {
+  position: relative;
+}
+.scroll-fade-dark::before,
+.scroll-fade-dark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.scroll-fade-dark::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-primary-900), transparent);
+}
+.scroll-fade-dark::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-primary-900), transparent);
+}
+.scroll-fade-dark.is-scrolled::before { opacity: 1; }
+.scroll-fade-dark.is-scrollable::after { opacity: 1; }
+
+/* ===================================================================
+   Header
+   =================================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  padding: var(--scale-12) var(--container-padding);
+  background: var(--color-bg-alt);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+.logo img { width: 48px; height: 48px; }
+
+.main-nav {
+  display: none;
+  flex: 1;
+  gap: var(--spacing-xl);
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-nav a {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-nav);
+  color: var(--color-primary);
+  padding: var(--spacing-s) var(--spacing-xs);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.main-nav a:hover { color: var(--color-accent); }
+
+.lang-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  height: 40px;
+}
+/* The toggle owns the tap target and which of the two reads as selected;
+   the button component owns the containers. The unselected language rests
+   on the design's inactive ink, and every interactive state resolves back
+   to the navy label the component specifies.
+
+   The 44px target is an overlay rather than a min-height, so it doesn't
+   inflate the wash past the 20px the component draws. */
+.lang-toggle .btn {
+  --btn-fg: var(--color-gray-400);
+  position: relative;
+}
+.lang-toggle .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+.lang-toggle .btn[aria-pressed="true"],
+.lang-toggle .btn:hover,
+.lang-toggle .btn:focus-visible,
+.lang-toggle .btn:active { --btn-fg: var(--color-primary); }
+.lang-sep { color: var(--color-gray-400); }
+
+@media (min-width: 768px) {
+  .main-nav { display: flex; }
+  .main-nav ~ .lang-toggle { margin-left: 0; }
+}
+
+/* --- Project page variant ------------------------------------------
+   Same bar as the home header, but the nav is replaced by a single
+   "back" affordance plus the mark of the project being viewed. */
+.site-header--project { gap: var(--scale-12); }
+.site-header--project .logo { min-width: 32px; min-height: 44px; }
+.site-header--project .logo img { width: 32px; height: 32px; }
+
+/* A project page's back affordance is the button component's text variant.
+   All this adds is the arrow's nudge. */
+.back-link img { transition: transform 0.15s ease; }
+.back-link:hover img { transform: translateX(-3px); }
+@media (prefers-reduced-motion: reduce) {
+  .back-link:hover img { transform: none; }
+}
+
+.header-project {
+  display: none;
+  align-items: center;
+  gap: var(--scale-12);
+  margin-left: auto;
+}
+.header-project img { width: 72px; height: 24px; object-fit: contain; }
+.header-project::after {
+  content: "";
+  width: var(--scale-4);
+  height: var(--scale-4);
+  border-radius: 50%;
+  background: var(--color-gray-300);
+}
+
+@media (min-width: 768px) {
+  .site-header--project { gap: var(--spacing-xl); }
+  .header-project { display: flex; }
+  .header-project ~ .lang-toggle { margin-left: 0; }
+}
+
+/* ===================================================================
+   Hero
+   =================================================================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  padding: var(--spacing-2xl) var(--container-padding);
+}
+
+.hero-portrait { flex: 0 0 auto; }
+/* Proportions below are lifted 1:1 from the Figma "Profile Image Container"
+   (385x474 desktop / 240.42x296 mobile — same 385:474 aspect ratio both times)
+   so the head clears the top of the gray circle exactly as designed. */
+.portrait-ring {
+  position: relative;
+  width: 240px;
+  aspect-ratio: 385 / 474;
+}
+.portrait-ellipse {
+  position: absolute;
+  left: 11.27%;
+  top: 25.95%;
+  width: 77.05%;
+  height: 62.6%;
+  border-radius: 50%;
+  background: var(--color-gray-100);
+  z-index: 0;
+}
+.ring-svg {
+  position: absolute;
+  left: 0;
+  /* Vertically centers the ring's circle on the gray ellipse's own center
+     (both at ~57.24% of the container), so the gap between them is uniform
+     all the way around instead of wider at top than bottom. */
+  top: 16.62%;
+  width: 100%;
+  /* Exact match to the viewBox (385x407) — guarantees the SVG is scaled
+     uniformly at every breakpoint, never letterboxed/stretched into an oval. */
+  aspect-ratio: 385 / 407;
+  z-index: 1;
+  /* The circle path is centered at viewBox (192.5, 192.5), not at the
+     viewBox's own midpoint (192.5, 203.5) — rotating around 50% 50% pivots
+     ~11 units off the true center, which reads as an off-axis wobble
+     (ring-to-portrait distance changing through the spin). 192.5/407=47.3%. */
+  transform-origin: 50% 47.3%;
+  animation: ring-spin 18s linear infinite;
+}
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ring-svg { animation: none; }
+}
+.ring-text, .ring-text textPath {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  /* In SVG user-space units — scales with the SVG's own viewBox transform,
+     so this single value yields ~17.4px at the 240px mobile ring and
+     ~27.9px at the 385px desktop ring, matching Figma's two sizes exactly. */
+  font-size: 27.89px;
+  fill: var(--color-gray-200);
+}
+.portrait-photo-mask {
+  position: absolute;
+  left: 11.57%;
+  top: 0;
+  width: 77.03%;
+  height: 88.61%;
+  z-index: 1;
+  overflow: hidden;
+  display: block;
+  /* Data-URI mask: external SVG mask-image can fail in Chrome (e.g. file://),
+     which hides the photo and leaves only the gray ellipse behind. */
+  --portrait-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 296.574 419.987' preserveAspectRatio='none'%3E%3Cpath d='M296.574 271.663C296.574 353.58 230.184 419.987 148.287 419.987C66.3903 419.987 0 353.58 0 271.663C0 189.746 -8.42673e-05 11.8369 140.457 0C269.843 0 296.574 189.746 296.574 271.663Z' fill='%23fff'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--portrait-mask);
+  mask-image: var(--portrait-mask);
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.portrait-photo {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+  max-width: 831px;
+  text-align: center;
+}
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+.hero-heading h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display);
+  line-height: 1.15;
+  color: var(--color-gray-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0;
+}
+.role-rotator {
+  color: var(--color-accent);
+  display: inline-block;
+  overflow: hidden;
+  height: 1.2em;
+  vertical-align: bottom;
+}
+.role-track {
+  display: flex;
+  flex-direction: column;
+  animation: role-cycle 8s infinite;
+}
+.role {
+  height: 1.2em;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+@keyframes role-cycle {
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-1.2em); }
+  50%, 70% { transform: translateY(-2.4em); }
+  75%, 95% { transform: translateY(-3.6em); }
+  100% { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-track { animation: none; }
+}
+
+.hero-paragraph {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-hero-body);
+  line-height: 1.5;
+  color: var(--color-gray-900);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  /* Falls back to flex-start once the row overflows, so the first chip stays
+     reachable instead of being clipped past the scroll origin. */
+  justify-content: safe center;
+  gap: var(--spacing-md);
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-top: calc(var(--spacing-xl) - var(--spacing-xs));
+}
+.skill-tags::-webkit-scrollbar { display: none; }
+.skill-tags > li { flex: 0 0 auto; }
+
+@media (min-width: 1200px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--scale-64);
+  }
+  .hero-content { text-align: left; }
+  .hero-heading h1 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    text-align: left;
+    gap: var(--spacing-s);
+  }
+  .role { justify-content: flex-start; }
+  .skill-tags {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-x: visible;
+  }
+  .portrait-ring { width: 385px; }
+  .pill-outline { font-size: var(--type-body-lg-size); padding: var(--scale-12) var(--spacing-md); }
+}
+
+/* ===================================================================
+   Brands
+   =================================================================== */
+.brands {
+  background: var(--color-primary-50);
+  padding: var(--spacing-2xl) var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+.brands-marquee {
+  --brands-gap: var(--spacing-3xl);
+  --brands-speed: 28s;
+  display: flex;
+  gap: var(--brands-gap);
+  overflow: hidden;
+  margin-inline: calc(var(--container-padding) * -1);
+  padding-bottom: var(--spacing-xs);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.brands-list {
+  display: flex;
+  align-items: center;
+  gap: var(--brands-gap, var(--spacing-3xl));
+  flex: 0 0 auto;
+  min-width: max-content;
+  padding-inline: 0;
+  animation: brands-scroll var(--brands-speed) linear infinite;
+}
+.brands-list li { flex: 0 0 auto; height: 32px; display: flex; align-items: center; }
+.brands-list img { height: 100%; width: auto; max-height: 40px; object-fit: contain; }
+
+@keyframes brands-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--brands-gap))); }
+}
+
+@media (hover: hover) {
+  .brands-marquee:hover .brands-list { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-marquee {
+    overflow-x: auto;
+    scrollbar-width: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .brands-marquee::-webkit-scrollbar { display: none; }
+  .brands-list { animation: none; }
+  .brands-list-clone { display: none; }
+}
+
+@media (min-width: 1200px) {
+  .brands-marquee {
+    display: block;
+    overflow: visible;
+    margin-inline: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .brands-list {
+    justify-content: space-between;
+    min-width: 0;
+    animation: none;
+  }
+  .brands-list-clone { display: none; }
+}
+
+/* ===================================================================
+   Projects
+   =================================================================== */
+.projects {
+  padding: var(--spacing-2xl) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+.projects > .kicker {
+  padding: 0 var(--container-padding);
+  text-align: left;
+  display: block;
+}
+.project-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.project-grid {
+  display: flex;
+  gap: var(--spacing-xl);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* Inset the snapport so snapped cards land after the gutter instead of the container edge. */
+  scroll-padding-inline: var(--container-padding);
+  /* Vertical padding keeps card shadows from being clipped by the scroll container;
+     negative margins cancel it so section spacing stays unchanged. */
+  padding: var(--spacing-md) var(--container-padding) var(--spacing-xl);
+  margin-block: calc(var(--spacing-md) * -1);
+  scrollbar-width: none;
+}
+.project-grid::-webkit-scrollbar { display: none; }
+
+.project-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-50);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card a {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-card);
+}
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+}
+.project-thumb {
+  height: 100px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-gray-100);
+}
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.project-body { display: flex; flex-direction: column; gap: var(--spacing-s); }
+.project-body h4 {
+  font-size: var(--type-title-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--type-title-md-tracking);
+}
+.project-body p {
+  font-size: var(--type-body-md-size);
+  line-height: var(--type-body-md-line-height);
+  color: var(--color-gray-700);
+  min-height: 60px;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-s);
+}
+
+@media (min-width: 768px) {
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: visible;
+  }
+  .project-card { flex-basis: auto; }
+}
+
+@media (min-width: 1200px) {
+  .projects { padding: var(--spacing-3xl) 0; }
+  .project-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-thumb { height: 150px; }
+  .project-body p { min-height: 80px; }
+}
+
+/* ===================================================================
+   3D Design
+   =================================================================== */
+.threed {
+  background: var(--gradient-brand);
+  border-bottom: 2px solid var(--color-white);
+  padding: var(--spacing-2xl) var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+.threed-title {
+  text-align: left;
+}
+.threed-paragraph {
+  color: var(--color-white);
+  font-size: var(--font-size-section-body);
+  line-height: 1.4;
+}
+.scroll-hint {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  margin: 0;
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--type-body-md-size);
+}
+
+.threed-track {
+  display: flex;
+  gap: var(--spacing-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.threed-track::-webkit-scrollbar { display: none; }
+.threed-track li {
+  flex: 0 0 180px;
+  height: 180px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.threed-track img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Not the button component: it sits on the navy section, and the design
+   system has no on-dark treatment to borrow from. */
+.instagram-link {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--type-body-md-size);
+  text-decoration: underline;
+  min-height: 44px;
+}
+
+@media (min-width: 768px) {
+  .threed-track li { flex-basis: 260px; height: 260px; }
+}
+
+@media (min-width: 1200px) {
+  .threed { padding: var(--spacing-3xl) var(--container-padding); }
+  .threed-track li { flex-basis: 400px; height: 400px; }
+}
+
+/* ===================================================================
+   Motion Design
+   =================================================================== */
+.motion {
+  background: var(--gradient-brand);
+  padding: var(--spacing-2xl) var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+.motion-paragraph {
+  color: var(--color-white);
+  font-size: var(--font-size-section-body);
+  line-height: 1.4;
+}
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+.motion-swatch {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-gray-900);
+}
+.motion-swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .motion-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1200px) {
+  .motion { padding: var(--spacing-3xl) var(--container-padding); }
+  .motion-grid { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* ===================================================================
+   Footer
+   =================================================================== */
+.site-footer {
+  background: linear-gradient(to right, #f9fafb, #eef2ff);
+  padding: var(--spacing-3xl) var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  text-align: center;
+}
+.footer-cta {
+  font-weight: 800;
+  font-size: var(--font-size-headline);
+  line-height: 1.15;
+  color: var(--color-primary);
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+.footer-icons { display: flex; gap: var(--spacing-md); }
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.icon-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-white);
+}
+/* Pressed matches the button component's teal container. */
+.icon-btn:active {
+  border-color: var(--color-secondary);
+  background: var(--color-secondary-200);
+}
+.copyright {
+  font-size: 13px;
+  color: var(--color-gray-600);
+}
+
+@media (min-width: 768px) {
+  .footer-links { flex-direction: row; gap: var(--spacing-3xl); }
+}

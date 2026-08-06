@@ -1,0 +1,657 @@
+/* ===================================================================
+   CASE STUDY PAGE
+   Layer on top of styles.css for the long-form project pages.
+   Everything here reads the semantic tokens defined in styles.css so a
+   case study stays visually part of the portfolio.
+
+   01. Page shell           05. Editorial blocks
+   02. Scroll ruler         06. Data blocks
+   03. Reveal on scroll     07. System blocks
+   04. Hero                 08. Close
+   =================================================================== */
+
+/* --- 01. Page shell ------------------------------------------------ */
+.case {
+  /* Vertical rhythm between case-study sections. Much larger than the
+     home page's: these blocks are read one at a time, not scanned. */
+  --case-block-space: clamp(48px, 8vw, 104px);
+  /* Reading measure for body copy. Titles get a wider one so a short
+     headline still breaks into two or three deliberate lines. */
+  --case-measure: 62ch;
+  --case-title-measure: 20ch;
+  --case-shell: 1120px;
+
+  --case-title-size: clamp(30px, 5.2vw, 56px);
+  --case-lede-size: clamp(17px, 1.6vw, 20px);
+
+  background: var(--color-white);
+}
+
+.case-section {
+  padding: var(--case-block-space) var(--container-padding);
+}
+.case-shell {
+  max-width: var(--case-shell);
+  margin-inline: auto;
+}
+
+/* Dark sections reuse the same navy gradient as the 3D / motion
+   sections on the home page. */
+.case-section--dark {
+  background: var(--gradient-brand);
+  color: var(--color-white);
+}
+.case-section--tint { background: var(--color-primary-50); }
+
+/* --- 02. Scroll ruler ----------------------------------------------
+   A reading-progress rail in the left page margin. It only appears
+   once the margin is wide enough to hold it without crowding the text,
+   so it is a desktop-only affordance and purely decorative. */
+.case-ruler { display: none; }
+
+@media (min-width: 1200px) {
+  .case-ruler {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 56px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .case-ruler-track,
+  .case-ruler-fill {
+    position: absolute;
+    left: 27px;
+    top: 12%;
+    width: 1px;
+  }
+  .case-ruler-track {
+    bottom: 6%;
+    background: var(--color-gray-300);
+  }
+  .case-ruler-fill {
+    height: calc(var(--case-progress, 0) * 82%);
+    max-height: 82%;
+    background: var(--color-accent);
+  }
+  /* Minor graduations every 5% of the rail, drawn as one repeating
+     gradient rather than 21 elements. */
+  .case-ruler-ticks {
+    position: absolute;
+    left: 24px;
+    top: 12%;
+    bottom: 6%;
+    width: 7px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--color-gray-300) 0 1px,
+      transparent 1px 5%
+    );
+  }
+  .case-ruler-mark {
+    position: absolute;
+    left: 20px;
+    top: calc(12% + var(--p) * 82%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-s);
+  }
+  .case-ruler-mark::before {
+    content: "";
+    width: 11px;
+    height: 1px;
+    background: var(--color-gray-600);
+  }
+  .case-ruler-mark span {
+    font-size: 9px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5px;
+    color: var(--color-gray-600);
+  }
+}
+
+/* --- 03. Reveal on scroll ------------------------------------------ */
+.case-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.case-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* Without JS nothing would ever add .is-visible, so opt in only when
+   scripting is available. */
+html:not(.js) .case-reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-reveal { transition: none; opacity: 1; transform: none; }
+}
+
+/* --- 04. Hero ------------------------------------------------------ */
+.case-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  text-align: center;
+  background: var(--color-bg-alt);
+  padding-top: clamp(48px, 8vw, 96px);
+}
+.case-hero-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 920px;
+}
+.case-hero-intro > * { position: relative; z-index: 1; }
+
+/* Decorative dial centered on the title — a nod to the product's 360°
+   name. Sized off the title block so it always frames the headline
+   rather than floating somewhere in the section. */
+.case-hero-dial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(112vw, 660px);
+  height: min(112vw, 660px);
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.case-hero-dial line { stroke: var(--color-primary); stroke-width: 1.4; opacity: 0.2; }
+.case-hero-dial circle {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  opacity: 0.45;
+  /* 2πr for the r=260 circle in the SVG's own viewBox units. */
+  stroke-dasharray: 1634;
+  stroke-dashoffset: 1634;
+  animation: case-dial-sweep 900ms 150ms ease-out forwards;
+}
+@keyframes case-dial-sweep {
+  to { stroke-dashoffset: 409; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-hero-dial circle { animation: none; stroke-dashoffset: 409; }
+}
+.case-hero h1 {
+  font-size: clamp(44px, 11vw, 104px);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+}
+.case-hero-lede {
+  max-width: 46ch;
+  font-size: var(--case-lede-size);
+  line-height: 1.5;
+  color: var(--color-gray-700);
+}
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-s) var(--spacing-md);
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-600);
+}
+.case-meta li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+/* The separator only reads as a separator while the items share a line;
+   once they stack it becomes a dangling dot, so it is opt-in by width. */
+@media (min-width: 900px) {
+  .case-meta li:not(:last-child)::after {
+    content: "";
+    width: var(--scale-4);
+    height: var(--scale-4);
+    border-radius: 50%;
+    background: var(--color-gray-300);
+  }
+}
+.case-meta b {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-800);
+}
+
+.case-hero-figure {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+/* --- 05. Editorial blocks ------------------------------------------ */
+.case-kicker {
+  display: block;
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-secondary-700);
+  margin-bottom: var(--spacing-md);
+}
+.case-section--dark .case-kicker { color: var(--color-secondary-200); }
+
+.case-title {
+  max-width: var(--case-title-measure);
+  font-size: var(--case-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xl);
+}
+.case-section--dark .case-title { color: var(--color-white); }
+
+.case-lede {
+  max-width: var(--case-measure);
+  font-size: var(--case-lede-size);
+  line-height: 1.6;
+  color: var(--color-gray-700);
+}
+.case-section--dark .case-lede { color: var(--color-primary-100); }
+
+.case-pull {
+  max-width: 34ch;
+  font-size: clamp(19px, 2.2vw, 24px);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  color: var(--color-accent);
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--spacing-md);
+}
+.case-section--dark .case-pull {
+  color: var(--color-white);
+  border-left-color: var(--color-secondary);
+}
+
+/* Consistent vertical spacing inside a section without per-element
+   margins: every block gets the same gap and the flow stays editable. */
+.case-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+}
+/* Kicker, title and lede read as one unit, so they keep their own
+   tighter internal spacing instead of the flow gap. */
+.case-intro .case-title { margin-bottom: var(--spacing-md); }
+
+/* Screenshot frame. Real images fill it; when a shot is not available
+   yet the same frame renders as a labelled placeholder. */
+.case-shot {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-gray-50);
+  box-shadow: var(--shadow-card);
+}
+.case-shot img { width: 100%; height: 100%; object-fit: cover; }
+.case-shot--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl);
+  border: 1.5px dashed var(--color-gray-300);
+  background: var(--color-gray-50);
+  box-shadow: none;
+  color: var(--color-gray-600);
+  font-size: var(--type-body-sm-size);
+  letter-spacing: 0.4px;
+}
+.case-section--dark .case-shot--empty {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-primary-100);
+}
+.case-caption {
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+}
+
+/* --- 06. Data blocks ----------------------------------------------- */
+/* Roles: concentric arcs sized by how much of the product each role
+   can reach. Diagram and legend stack on small screens. */
+.case-roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2xl) var(--spacing-3xl);
+}
+.case-roles-dial {
+  flex: 0 1 380px;
+  width: min(100%, 380px);
+  height: auto;
+}
+.case-roles-dial .case-roles-bg { stroke: var(--color-gray-100); }
+.case-roles-dial .case-roles-arc { stroke: var(--color-accent); }
+.case-roles-legend {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--scale-12);
+  font-size: var(--type-body-md-size);
+  line-height: 1.4;
+  color: var(--color-gray-700);
+}
+.case-roles-legend b {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+}
+.case-stat dd {
+  margin: 0;
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+.case-stat dt {
+  margin-top: var(--spacing-s);
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+}
+
+/* Surface tabs. The tablist scrolls horizontally on narrow screens so
+   all four surfaces stay reachable without wrapping into a block. */
+.case-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+.case-tablist {
+  display: flex;
+  gap: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-gray-200);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.case-tablist::-webkit-scrollbar { display: none; }
+.case-tab {
+  flex: 0 0 auto;
+  padding: var(--scale-12) var(--spacing-md);
+  min-height: 44px;
+  font-size: var(--type-label-lg-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.5px;
+  color: var(--color-gray-600);
+  border-bottom: 2px solid transparent;
+  border-radius: var(--radius-base) var(--radius-base) 0 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.case-tab:hover { color: var(--color-primary); }
+.case-tab[aria-selected="true"] {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent);
+}
+.case-tabpanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2xl);
+  align-items: flex-start;
+}
+.case-tabpanel[hidden] { display: none; }
+.case-tabpanel > .case-lede { flex: 1 1 300px; }
+.case-tabpanel > .case-shot { flex: 1 1 300px; max-width: 420px; }
+
+.case-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+.case-compare figure { margin: 0; display: flex; flex-direction: column; gap: var(--spacing-s); }
+.case-compare figcaption { order: -1; }
+
+/* Records table. Below 768px each row becomes a stacked card so the
+   four columns never force a horizontal scroll. */
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--type-body-lg-size);
+}
+.case-table caption { text-align: left; }
+.case-table th {
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+  text-align: right;
+  padding: var(--spacing-s) var(--scale-12);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+.case-table th:first-child,
+.case-table td:first-child { text-align: left; }
+.case-table td {
+  padding: var(--scale-12);
+  text-align: right;
+  color: var(--color-gray-900);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+.case-table td:last-child { color: var(--color-gray-600); }
+.case-delta { font-weight: var(--font-weight-bold); }
+.case-delta--up { color: var(--color-success); }
+.case-delta--down { color: var(--color-error); }
+
+@media (max-width: 767px) {
+  .case-table thead { display: none; }
+  .case-table,
+  .case-table caption,
+  .case-table tbody,
+  .case-table tr,
+  .case-table td { display: block; }
+  .case-table tr {
+    border: 1px solid var(--color-gray-100);
+    border-radius: var(--radius-card);
+    padding: var(--spacing-s) var(--scale-12);
+    margin-bottom: var(--scale-12);
+  }
+  .case-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    text-align: right;
+    padding: var(--spacing-xs) 0;
+    border: 0;
+  }
+  .case-table td::before {
+    content: attr(data-label);
+    font-size: var(--type-label-md-size);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-gray-600);
+  }
+  .case-table td:first-child {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+  .case-table td:first-child::before { content: none; }
+}
+
+.case-specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+.case-spec {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-xl);
+}
+.case-spec h3 {
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-secondary-200);
+  margin-bottom: var(--spacing-s);
+}
+.case-spec p {
+  font-size: var(--type-body-lg-size);
+  line-height: 1.5;
+  color: var(--color-primary-100);
+}
+
+.case-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  max-width: 720px;
+}
+.case-step {
+  padding-left: var(--spacing-md);
+  border-left: 2px solid var(--color-gray-200);
+}
+.case-step dt {
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-secondary-700);
+}
+.case-step dd {
+  margin: var(--spacing-xs) 0 0;
+  font-size: var(--type-body-lg-size);
+  color: var(--color-gray-900);
+}
+
+/* --- 07. System blocks --------------------------------------------- */
+.case-subhead {
+  font-size: var(--type-label-md-size);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gray-600);
+  margin-bottom: var(--scale-12);
+}
+
+.case-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  max-width: 840px;
+}
+.case-swatches li {
+  flex: 1 0 25%;
+  height: 72px;
+  background: var(--swatch);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--spacing-xs);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: var(--color-white);
+}
+.case-swatches li[data-on-light] { color: var(--color-gray-900); }
+
+.case-type li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-s);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+.case-type li + li { margin-top: var(--scale-12); }
+.case-type b {
+  flex: 0 0 44px;
+  font-size: var(--type-body-sm-size);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-600);
+}
+.case-type span {
+  font-size: var(--step);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  line-height: 1.1;
+  /* The 60px step would overflow a 360px viewport on its own line. */
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.case-radius {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: var(--type-body-md-size);
+  color: var(--color-gray-600);
+}
+.case-radius::before {
+  content: "";
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary);
+}
+
+/* --- 08. Close ------------------------------------------------------ */
+.case-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-xl);
+}
+.case-close .case-title { max-width: 24ch; margin-bottom: 0; }
+.case-close .case-lede { max-width: 52ch; }
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-s);
+}
+/* The closing CTAs use the shared button component from css/button.css
+   (.btn plus .btn--primary / .btn--secondary), so a case study on the
+   portfolio's own skin inherits its full set of states. */
+
+/* ===================================================================
+   Breakpoints
+   =================================================================== */
+@media (min-width: 768px) {
+  .case-stats { grid-template-columns: repeat(4, 1fr); }
+  .case-compare { grid-template-columns: repeat(2, 1fr); }
+  .case-specs { grid-template-columns: repeat(3, 1fr); }
+  .case-steps { grid-template-columns: repeat(3, 1fr); }
+  .case-swatches li { flex-basis: 16.666%; height: 88px; }
+  .case-type b { flex-basis: 56px; font-size: var(--type-body-md-size); }
+}
+
+@media (min-width: 1200px) {
+  .case-swatches li { flex-basis: 8.333%; }
+  .case-roles { flex-wrap: nowrap; }
+  .case-roles-dial { flex: 0 0 420px; width: 420px; }
+}

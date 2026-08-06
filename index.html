@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="site.docTitle">Andrés Betancourt — Product Designer</title>
+<meta name="description" content="Andrés Betancourt, Product Designer. UX/UI, design systems, 3D and motion design." />
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<meta name="theme-color" content="#FB1D61" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/button.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <a class="logo" href="#top" data-i18n-attr="aria-label:a11y.home" aria-label="Andrés Betancourt — home">
+    <img src="assets/icons/logo.svg" alt="" width="48" height="48" />
+  </a>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="#about" data-i18n="nav.about">About me</a>
+    <a href="#projects" data-i18n="nav.projects">My projects</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button type="button" class="btn btn--plain" data-lang-option="es" aria-pressed="false">ES</button>
+    <span class="lang-sep" aria-hidden="true">/</span>
+    <button type="button" class="btn btn--plain" data-lang-option="en" aria-pressed="true">EN</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="about" aria-label="Introduction">
+    <div class="hero-portrait">
+      <div class="portrait-ring">
+        <svg class="ring-svg" viewBox="0 0 385 407" aria-hidden="true">
+          <path id="ringPath" d="M 192.5,15 A 177.5,177.5 0 1 1 192.499,15" fill="none" />
+          <text class="ring-text" data-i18n-ring>
+            <textPath href="#ringPath" startOffset="0%"></textPath>
+          </text>
+        </svg>
+        <span class="portrait-ellipse" aria-hidden="true"></span>
+        <span class="portrait-photo-mask">
+          <img class="portrait-photo" src="assets/images/portrait.png" alt="Andrés Betancourt" />
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-heading">
+        <h1>
+          <span data-i18n="hero.greeting">I'm a</span>
+          <span class="role-rotator" aria-live="off">
+            <span class="role-track">
+              <span class="role" data-i18n="hero.role.0">Product Designer</span>
+              <span class="role" data-i18n="hero.role.1">UX UI Designer</span>
+              <span class="role" data-i18n="hero.role.2">Agentic Designer</span>
+              <span class="role" data-i18n="hero.role.3">3D Designer</span>
+            </span>
+          </span>
+        </h1>
+      </div>
+
+      <p class="hero-paragraph" data-i18n="hero.paragraph">
+        Principal product designer with a technical edge: I use AI tools to prototype faster, translate designs into dev-ready specs, and bridge the gap between Figma and code. 5+ years leading design systems for scaleups and enterprise clients.
+      </p>
+
+      <ul class="skill-tags">
+        <li class="pill pill-outline" data-i18n="hero.tag.0">Systems Thinking</li>
+        <li class="pill pill-outline" data-i18n="hero.tag.1">AI-Powered Prototyping</li>
+        <li class="pill pill-outline" data-i18n="hero.tag.2">Dev Handoff</li>
+        <li class="pill pill-outline" data-i18n="hero.tag.3">Motion Design</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="brands" aria-label="Clients">
+    <h2 class="kicker" data-i18n="brands.title">Clients I have worked with</h2>
+    <div class="brands-marquee">
+      <ul class="brands-list">
+        <li><img src="assets/images/brands/hyatt.png" alt="Hyatt" loading="lazy" /></li>
+        <li><img src="assets/images/brands/fullstacklabs.svg" alt="Fullstack Labs" loading="lazy" /></li>
+        <li><img src="assets/images/brands/pulte.png" alt="Pulte Homes" loading="lazy" /></li>
+        <li><img src="assets/images/brands/allcore360.svg" alt="AllCore360º" loading="lazy" /></li>
+        <li><img src="assets/images/brands/laika.png" alt="Laika Compliance" loading="lazy" /></li>
+        <li><img src="assets/images/brands/coomeva.png" alt="Grupo Coomeva" loading="lazy" /></li>
+        <li><img src="assets/images/brands/gorillalogic.svg" alt="Gorilla Logic" loading="lazy" /></li>
+        <li><img src="assets/images/brands/supergiros.png" alt="SuperGIROS" loading="lazy" /></li>
+      </ul>
+      <ul class="brands-list brands-list-clone" aria-hidden="true">
+        <li><img src="assets/images/brands/hyatt.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/fullstacklabs.svg" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/pulte.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/allcore360.svg" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/laika.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/coomeva.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/gorillalogic.svg" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/brands/supergiros.png" alt="" loading="lazy" /></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="projects" id="projects" aria-label="Projects">
+    <h2 class="kicker" data-i18n="projects.title">My top projects</h2>
+
+    <div class="project-group">
+      <div class="scroll-fade">
+        <ul class="project-grid" data-scroll-carousel>
+          <li class="project-card">
+            <a href="proyectos/hyatt.html">
+              <div class="project-thumb"><img src="assets/images/projects/hyatt.png" alt="" data-i18n-attr="alt:project.hyatt.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.hyatt.title">Hyatt</h4>
+                <p data-i18n="project.hyatt.desc">From Testing, creating new UIs and designing a complex Design System that required the use of tokens and variables.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.design-system">Design System</li>
+                  <li class="pill pill-fill" data-i18n="tag.product-design">Product Design</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/allcore360.html">
+              <div class="project-thumb"><img src="assets/images/projects/allcore360.png" alt="" data-i18n-attr="alt:project.allcore360.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.allcore360.title">AllCore360º</h4>
+                <p data-i18n="project.allcore360.desc">CRM + hardware platform connecting gyms and clinics — built a full design system from scratch in Figma, from user flows to component library.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.product-design">Product Design</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                  <li class="pill pill-fill" data-i18n="tag.claude">Claude</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/piku.html">
+              <div class="project-thumb"><img src="assets/images/projects/piku.png" alt="" data-i18n-attr="alt:project.piku.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.piku.title">Piku</h4>
+                <p data-i18n="project.piku.desc">Designed a conceptual platform for seamless restaurant order and quick pickup using Design Thinking methodology.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.case-study">Case Study</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/widdyup.html">
+              <div class="project-thumb"><img src="assets/images/projects/widdyup.png" alt="" data-i18n-attr="alt:project.widdyup.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.widdyup.title">WiddyUp</h4>
+                <p data-i18n="project.widdyup.desc">Validation prototype for a video-based fundraising platform, built with Claude for schools, bands, and performing arts programs.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.claude">Claude</li>
+                  <li class="pill pill-fill" data-i18n="tag.agentic">Agentic Product Designer</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-group">
+      <div class="scroll-fade">
+        <ul class="project-grid" data-scroll-carousel>
+          <li class="project-card">
+            <a href="proyectos/logika.html">
+              <div class="project-thumb"><img src="assets/images/projects/logika.png" alt="" data-i18n-attr="alt:project.logika.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.logika.title">Logika</h4>
+                <p data-i18n="project.logika.desc">Creation of a platform that helps startups/entrepreneurs grow their business. Design created from scratch with design system.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.product-design">Product Design</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/pulte.html">
+              <div class="project-thumb"><img src="assets/images/projects/pulte.png" alt="" data-i18n-attr="alt:project.pulte.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.pulte.title">Pulte</h4>
+                <p data-i18n="project.pulte.desc">Developed the component library from the ground up, providing robust support for building the new platform.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.product-design">Product Design</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/laika.html">
+              <div class="project-thumb"><img src="assets/images/projects/laika.png" alt="" data-i18n-attr="alt:project.laika.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.laika.title">Laika</h4>
+                <p data-i18n="project.laika.desc">Performed A/B testing and a UX/UI audit, exploring best practices to refine their design system.</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.ux-design">UX Design</li>
+                  <li class="pill pill-fill" data-i18n="tag.ui-design">UI Design</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+          <li class="project-card">
+            <a href="proyectos/nequi.html">
+              <div class="project-thumb"><img src="assets/images/projects/nequi.png" alt="" data-i18n-attr="alt:project.nequi.title" loading="lazy" /></div>
+              <div class="project-body">
+                <h4 data-i18n="project.nequi.title">Nequi</h4>
+                <p data-i18n="project.nequi.desc">Execution of a design proposal for the creation and offer of microcredit services in the Nequi web app (Colombian Digital Bank).</p>
+                <ul class="project-tags">
+                  <li class="pill pill-fill" data-i18n="tag.case-study">Case Study</li>
+                  <li class="pill pill-fill" data-i18n="tag.figma">Figma</li>
+                </ul>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="threed" aria-label="3D Design">
+    <h2 class="kicker kicker-invert threed-title" data-i18n="threed.title">3D Design</h2>
+    <p class="threed-paragraph" data-i18n="threed.paragraph">I am passionate for 3D design, I mostly use Blender and Nomad Sculpt for my work.</p>
+    <p class="scroll-hint" aria-hidden="true">
+      <span data-i18n="threed.scroll">Scroll</span>
+      <img src="assets/icons/arrow-forward.svg" alt="" width="11" height="11" />
+    </p>
+
+    <div class="scroll-fade scroll-fade-dark">
+      <ul class="threed-track" id="threed-track" data-scroll-carousel>
+        <li><img src="assets/images/3d/octopus.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/fercho.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/oso.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/gota.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/namaste.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/dragon.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/el-pollo.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/helado.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/bomb.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/loco.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/regalo.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/lama.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/marciano.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/gallina-chueca.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/rocket.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/fresita.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/ilustracion-sin-titulo.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/la-vacation.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/libro.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/mariquita.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/alienpus.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/beemo.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/camaronsin.png" alt="" loading="lazy" /></li>
+        <li><img src="assets/images/3d/escoba.png" alt="" loading="lazy" /></li>
+      </ul>
+    </div>
+
+    <a class="instagram-link" href="https://www.instagram.com/windowtodd.design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+      <img src="assets/icons/instagram.png" alt="" width="24" height="24" />
+      @windowtodd.design
+    </a>
+  </section>
+
+  <section class="motion" aria-label="Motion Design">
+    <h2 class="kicker kicker-invert" data-i18n="motion.title">Motion design</h2>
+    <p class="motion-paragraph" data-i18n="motion.paragraph">I also apply motion design and micro-interactions to my prototypes and designs. Here are some examples.</p>
+
+    <ul class="motion-grid">
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-1.png" alt="" loading="lazy" />
+      </li>
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-2.png" alt="" loading="lazy" />
+      </li>
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-3.png" alt="" loading="lazy" />
+      </li>
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-4.png" alt="" loading="lazy" />
+      </li>
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-5.png" alt="" loading="lazy" />
+      </li>
+      <li class="motion-swatch">
+        <img src="assets/images/motion/motion-6.png" alt="" loading="lazy" />
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+  <h2 class="footer-cta" data-i18n="footer.cta">Let's work together!</h2>
+  <div class="footer-links">
+    <div class="footer-icons">
+      <a class="icon-btn" href="mailto:andres.betancourt.di@outlook.com" data-i18n-attr="aria-label:footer.email.label">
+        <img src="assets/icons/email.svg" alt="" width="16" height="16" />
+      </a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/andres-betancourt-06604a171/" target="_blank" rel="noopener noreferrer" data-i18n-attr="aria-label:footer.linkedin.label">
+        <img src="assets/icons/linkedin.svg" alt="" width="16" height="16" />
+      </a>
+    </div>
+    <p class="copyright">© <span id="copyright-year">2026</span> Andrés Betancourt</p>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

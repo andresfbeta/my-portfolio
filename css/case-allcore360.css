@@ -1,0 +1,1241 @@
+/* ===================================================================
+   ALLCORE360º — CASE STUDY THEME
+
+   Self-contained skin for proyectos/allcore360.html so the page reads
+   as AllCore360's own product surface (Radix Themes conventions:
+   Roboto, 12-step red accent, 8px radius) instead of the portfolio's.
+
+   Deliberately isolated: this file loads on that page only, declares
+   its own reset and chrome, and reads none of the portfolio design
+   tokens. Every value below is literal or an --ac-* local. Nothing here
+   may be reused by another page — a second case study gets its own
+   client-branded file.
+
+   The one exception is the button component in css/button.css, which the
+   page loads as-is: the back link out of the case study is portfolio
+   chrome and is drawn by the portfolio's design system. Section 09
+   re-skins that component for the two CTAs on the near-black closing
+   surface, where the system's navy has nothing to sit against.
+
+   01. Palette & type       06. Editorial blocks
+   02. Reset                07. Data blocks
+   03. Header               08. System blocks
+   04. Scroll ruler         09. Close
+   05. Hero                 10. Footer
+   =================================================================== */
+
+/* --- 01. Palette & type --------------------------------------------
+   Sampled from the AllCore360 design system: a warm paper ground, the
+   #E51519 accent at step 9 of the 12-step scale, and a near-black
+   "night" surface for the safety-critical and closing sections. */
+.theme-allcore360 {
+  --ac-paper: #f7f4ef;
+  --ac-paper-sunk: #efe9e0;
+  --ac-ink: #171412;
+  --ac-body: #4a4238;
+  --ac-muted: #6e6459;
+
+  --ac-red: #e51519;
+  --ac-red-strong: #d50000;
+  /* One step below --ac-red-strong, so Hover and Pressed stay distinct. */
+  --ac-red-pressed: #ab0000;
+  --ac-salmon: #ff9082;
+
+  --ac-night: #111113;
+  --ac-night-ink: #edeef0;
+  --ac-night-body: #b0b4ba;
+  --ac-night-line: #363a3f;
+  --ac-night-faint: #5a5e63;
+  /* Container washes for controls sitting on the night surface. */
+  --ac-night-tint: rgba(237, 238, 240, 0.06);
+  --ac-night-tint-strong: rgba(237, 238, 240, 0.12);
+
+  --ac-up: #30a46c;
+  --ac-down: #e5484d;
+
+  /* Hairlines are alpha-based so they sit correctly on paper and on the
+     sunk tint without needing a second set of values. */
+  --ac-line: rgba(28, 25, 23, 0.14);
+  --ac-line-soft: rgba(28, 25, 23, 0.08);
+  --ac-line-dashed: rgba(28, 25, 23, 0.28);
+
+  --ac-font: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --ac-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radix "medium" radius — one value across the whole system. */
+  --ac-radius: 8px;
+
+  /* The 9-step ladder the case study itself documents. */
+  --ac-size-label: 12px;
+  --ac-size-body: 16px;
+  --ac-size-lede: clamp(17px, 1.7vw, 20px);
+  --ac-size-title: clamp(32px, 5.4vw, 60px);
+  --ac-size-display: clamp(52px, 11vw, 112px);
+  --ac-size-stat: clamp(40px, 7vw, 56px);
+
+  /* Sections breathe far more than the portfolio's: each block is read
+     on its own rather than scanned against its neighbours. */
+  --ac-section-y: clamp(88px, 13vw, 200px);
+  --ac-section-x: clamp(20px, 6vw, 80px);
+  --ac-flow: clamp(40px, 5vw, 72px);
+  --ac-shell: 1180px;
+}
+
+/* --- 02. Reset ------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+.theme-allcore360 {
+  font-family: var(--ac-font);
+  font-weight: 400;
+  color: var(--ac-ink);
+  background: var(--ac-paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.theme-allcore360 img {
+  max-width: 100%;
+  display: block;
+}
+.theme-allcore360 a {
+  color: inherit;
+  text-decoration: none;
+}
+.theme-allcore360 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.theme-allcore360 h1,
+.theme-allcore360 h2,
+.theme-allcore360 h3,
+.theme-allcore360 h4,
+.theme-allcore360 p {
+  margin: 0;
+}
+.theme-allcore360 button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.theme-allcore360 .skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--ac-red);
+  color: #fff;
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.theme-allcore360 .skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+.theme-allcore360 a:focus-visible,
+.theme-allcore360 button:focus-visible {
+  outline: 2px solid var(--ac-red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- 03. Header ----------------------------------------------------- */
+.theme-allcore360 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px var(--ac-section-x);
+  background: rgba(247, 244, 239, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ac-line);
+}
+.theme-allcore360 .logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 44px;
+}
+.theme-allcore360 .logo img {
+  width: 32px;
+  height: 32px;
+}
+
+/* The back link is portfolio chrome, not product chrome — it leaves this
+   page — so it is the portfolio's button component in its text variant,
+   used exactly as the design system draws it. The reset below re-asserts
+   the component's own colour, since this theme's blanket `a { color:
+   inherit }` would otherwise outrank it. */
+.theme-allcore360 .btn { color: var(--btn-fg); }
+.theme-allcore360 a.btn:focus-visible { border-radius: var(--radius-lg, 8px); }
+.theme-allcore360 .back-link img {
+  transition: transform 0.15s ease;
+}
+.theme-allcore360 .back-link:hover img {
+  transform: translateX(-3px);
+}
+
+.theme-allcore360 .header-project {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.theme-allcore360 .header-project img {
+  width: 72px;
+  height: 24px;
+  object-fit: contain;
+}
+.theme-allcore360 .header-project::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ac-muted);
+  opacity: 0.5;
+}
+
+.theme-allcore360 .lang-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.theme-allcore360 .lang-toggle button {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ac-muted);
+  transition: color 0.15s ease;
+}
+.theme-allcore360 .lang-toggle button[aria-pressed="true"] {
+  color: var(--ac-ink);
+}
+.theme-allcore360 .lang-toggle button:hover {
+  color: var(--ac-red);
+}
+.theme-allcore360 .lang-sep {
+  color: var(--ac-muted);
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .theme-allcore360 .site-header--project {
+    gap: 24px;
+  }
+  .theme-allcore360 .header-project {
+    display: flex;
+  }
+  .theme-allcore360 .header-project ~ .lang-toggle {
+    margin-left: 0;
+  }
+}
+
+/* --- 04. Scroll ruler -----------------------------------------------
+   Reading progress drawn as the machine's 360° dial unrolled into a
+   rail. Desktop only: below 1200px the margin cannot hold it without
+   crowding the text, and it carries no information the scrollbar
+   doesn't already give. */
+.theme-allcore360 .case-ruler {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .theme-allcore360 .case-ruler {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 40;
+    pointer-events: none;
+  }
+  .theme-allcore360 .case-ruler-track,
+  .theme-allcore360 .case-ruler-fill {
+    position: absolute;
+    left: 44px;
+    top: 12%;
+    width: 1px;
+  }
+  .theme-allcore360 .case-ruler-track {
+    bottom: 6%;
+    background: #8a8378;
+    opacity: 0.4;
+  }
+  .theme-allcore360 .case-ruler-fill {
+    height: calc(var(--case-progress, 0) * 82%);
+    max-height: 82%;
+    background: var(--ac-red);
+  }
+  /* Minor graduations every 5% of the rail, drawn as one repeating
+     gradient rather than 21 elements. */
+  .theme-allcore360 .case-ruler-ticks {
+    position: absolute;
+    left: 41px;
+    top: 12%;
+    bottom: 6%;
+    width: 7px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(138, 131, 120, 0.5) 0 1px,
+      transparent 1px 5%
+    );
+  }
+  /* Anchor each mark to the track (0-width). Labels hang fully left of
+     the line with a clear gap; the major tick grows right. Overrides
+     case-study flex/::before so they cannot pull text into the rail. */
+  .theme-allcore360 .case-ruler-mark {
+    position: absolute;
+    left: 44px;
+    top: calc(12% + var(--p) * 82%);
+    display: block;
+    width: 0;
+    height: 0;
+    gap: 0;
+    transform: none;
+  }
+  .theme-allcore360 .case-ruler-mark::before {
+    content: none;
+  }
+  .theme-allcore360 .case-ruler-mark span {
+    position: absolute;
+    right: 14px;
+    top: 0;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-family: var(--ac-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ac-muted);
+  }
+  .theme-allcore360 .case-ruler-mark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 11px;
+    height: 1px;
+    background: var(--ac-muted);
+    transform: translateY(-50%);
+  }
+}
+
+/* --- Section shell -------------------------------------------------- */
+.theme-allcore360 .case-section {
+  padding: var(--ac-section-y) var(--ac-section-x);
+}
+.theme-allcore360 .case-shell {
+  max-width: var(--ac-shell);
+  /* Left-aligned rather than centered: the reference reads as a
+     technical document, anchored to the ruler in the left margin. */
+  margin-inline: 0;
+}
+.theme-allcore360 .case-section--tint {
+  background: var(--ac-paper-sunk);
+}
+.theme-allcore360 .case-section--dark {
+  background: var(--ac-night);
+  color: var(--ac-night-ink);
+}
+
+/* Reveal on scroll: the reference defocuses a section until it is the
+   one being read, which suits an instrument panel better than a slide. */
+.theme-allcore360 .case-reveal {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.35s ease-out, filter 0.35s ease-out;
+}
+.theme-allcore360 .case-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+}
+html:not(.js) .theme-allcore360 .case-reveal {
+  opacity: 1;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-allcore360 .case-reveal {
+    transition: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
+/* --- 05. Hero -------------------------------------------------------- */
+.theme-allcore360 .case-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 6vw, 56px);
+  text-align: center;
+  padding-top: clamp(72px, 10vw, 120px);
+}
+.theme-allcore360 .case-hero-intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 920px;
+}
+.theme-allcore360 .case-hero-intro > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorative dial behind the title — the 360° of the product's name,
+   drawn as the graduated bezel of a measuring instrument. */
+.theme-allcore360 .case-hero-dial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(108vw, 700px);
+  height: min(108vw, 700px);
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+  opacity: 0.5;
+}
+.theme-allcore360 .case-hero-dial line {
+  stroke: #1c1917;
+  stroke-width: 1;
+  opacity: 0.18;
+}
+.theme-allcore360 .case-hero-dial circle {
+  fill: none;
+  stroke: var(--ac-red);
+  stroke-width: 1.5;
+  opacity: 0.55;
+  /* 2πr for the r=260 circle in the SVG's own viewBox units. */
+  stroke-dasharray: 1634;
+  stroke-dashoffset: 1634;
+  animation: ac-dial-sweep 900ms 150ms ease-out forwards;
+}
+@keyframes ac-dial-sweep {
+  to {
+    stroke-dashoffset: 409;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-allcore360 .case-hero-dial circle {
+    animation: none;
+    stroke-dashoffset: 409;
+  }
+}
+
+.theme-allcore360 .case-hero h1 {
+  font-size: var(--ac-size-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  color: var(--ac-ink);
+}
+.theme-allcore360 .case-hero-lede {
+  max-width: 40ch;
+  font-size: var(--ac-size-lede);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ac-body);
+}
+.theme-allcore360 .case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  font-size: var(--ac-size-label);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+}
+.theme-allcore360 .case-meta li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* The dot only reads as a separator while the items share a line; once
+   they stack it becomes a dangling mark, so it is opt-in by width. */
+@media (min-width: 900px) {
+  .theme-allcore360 .case-meta li:not(:last-child)::after {
+    content: "·";
+    color: var(--ac-muted);
+  }
+}
+.theme-allcore360 .case-meta b {
+  font-weight: 700;
+  color: var(--ac-body);
+}
+
+.theme-allcore360 .case-hero-figure {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- 06. Editorial blocks -------------------------------------------- */
+.theme-allcore360 .case-kicker {
+  display: block;
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+  margin-bottom: 20px;
+}
+.theme-allcore360 .case-section--dark .case-kicker {
+  color: var(--ac-salmon);
+}
+
+.theme-allcore360 .case-title {
+  max-width: 20ch;
+  font-size: var(--ac-size-title);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ac-ink);
+  margin-bottom: 28px;
+}
+.theme-allcore360 .case-section--dark .case-title {
+  color: var(--ac-night-ink);
+}
+
+.theme-allcore360 .case-lede {
+  max-width: 62ch;
+  font-size: var(--ac-size-lede);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ac-body);
+}
+.theme-allcore360 .case-section--dark .case-lede {
+  color: var(--ac-night-body);
+}
+
+/* Pull quotes carry the accent rather than a rule — the reference uses
+   colour alone to mark the line worth remembering. */
+.theme-allcore360 .case-pull {
+  max-width: 34ch;
+  font-size: var(--ac-size-lede);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ac-red);
+}
+.theme-allcore360 .case-section--dark .case-pull {
+  color: var(--ac-night-ink);
+}
+
+/* Consistent vertical spacing inside a section without per-element
+   margins: every block gets the same gap and the flow stays editable. */
+.theme-allcore360 .case-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ac-flow);
+}
+/* Kicker, title and lede read as one unit, so they keep their own
+   tighter internal spacing instead of the flow gap. */
+.theme-allcore360 .case-intro .case-title {
+  margin-bottom: 28px;
+}
+
+/* Screenshot frame. Real images fill it; a shot that does not exist yet
+   renders as the same frame in blueprint hatching. */
+.theme-allcore360 .case-shot {
+  border-radius: var(--ac-radius);
+  overflow: hidden;
+  background: rgba(28, 25, 23, 0.04);
+  border: 1px solid var(--ac-line);
+}
+.theme-allcore360 .case-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.theme-allcore360 .case-shot--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  border: 1.5px dashed var(--ac-line-dashed);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(28, 25, 23, 0.05) 0px,
+    rgba(28, 25, 23, 0.05) 2px,
+    transparent 2px,
+    transparent 11px
+  );
+  color: var(--ac-muted);
+  font-family: var(--ac-mono);
+  font-size: var(--ac-size-label);
+  letter-spacing: 0.03em;
+}
+.theme-allcore360 .case-section--dark .case-shot--empty {
+  border-color: rgba(237, 238, 240, 0.28);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(237, 238, 240, 0.05) 0px,
+    rgba(237, 238, 240, 0.05) 2px,
+    transparent 2px,
+    transparent 11px
+  );
+  color: var(--ac-night-body);
+}
+.theme-allcore360 .case-caption {
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+}
+
+/* --- 07. Data blocks -------------------------------------------------- */
+/* Roles: concentric arcs sized by how much of the product each role can
+   reach. Diagram and legend stack on small screens. */
+.theme-allcore360 .case-roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px 80px;
+}
+.theme-allcore360 .case-roles-dial {
+  flex: 0 1 380px;
+  width: min(100%, 380px);
+  height: auto;
+}
+.theme-allcore360 .case-roles-dial .case-roles-bg {
+  stroke: #1c1917;
+  opacity: 0.06;
+}
+.theme-allcore360 .case-roles-dial .case-roles-arc {
+  stroke: var(--ac-red);
+}
+.theme-allcore360 .case-roles-legend {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ac-body);
+}
+.theme-allcore360 .case-roles-legend b {
+  font-weight: 700;
+  color: var(--ac-ink);
+}
+
+.theme-allcore360 .case-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 56px;
+}
+.theme-allcore360 .case-stat dd {
+  margin: 0;
+  font-size: var(--ac-size-stat);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ac-ink);
+}
+.theme-allcore360 .case-stat dt {
+  margin-top: 8px;
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+}
+
+/* Surface tabs. The tablist scrolls horizontally on narrow screens so
+   all four surfaces stay reachable without wrapping into a block. */
+.theme-allcore360 .case-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.theme-allcore360 .case-tablist {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--ac-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.theme-allcore360 .case-tablist::-webkit-scrollbar {
+  display: none;
+}
+.theme-allcore360 .case-tab {
+  flex: 0 0 auto;
+  padding: 14px 22px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+  border-bottom: 2px solid transparent;
+  border-radius: 4px 4px 0 0;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.theme-allcore360 .case-tab:hover {
+  color: var(--ac-ink);
+}
+.theme-allcore360 .case-tab[aria-selected="true"] {
+  color: var(--ac-ink);
+  border-bottom-color: var(--ac-red);
+}
+.theme-allcore360 .case-tabpanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 64px;
+  align-items: flex-start;
+}
+.theme-allcore360 .case-tabpanel[hidden] {
+  display: none;
+}
+.theme-allcore360 .case-tabpanel > .case-lede {
+  flex: 1 1 320px;
+  max-width: 640px;
+}
+.theme-allcore360 .case-tabpanel > .case-shot {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.theme-allcore360 .case-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.theme-allcore360 .case-compare figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.theme-allcore360 .case-compare figcaption {
+  order: -1;
+}
+
+/* Records table. Below 768px each row becomes a stacked card so the four
+   columns never force a horizontal scroll. */
+.theme-allcore360 .case-table {
+  width: 100%;
+  max-width: 760px;
+  border-collapse: collapse;
+  font-size: var(--ac-size-body);
+}
+.theme-allcore360 .case-table caption {
+  text-align: left;
+}
+.theme-allcore360 .case-table th {
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+  text-align: right;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ac-line);
+}
+.theme-allcore360 .case-table th:first-child,
+.theme-allcore360 .case-table td:first-child {
+  text-align: left;
+}
+.theme-allcore360 .case-table td {
+  padding: 14px 12px;
+  text-align: right;
+  color: var(--ac-ink);
+  border-bottom: 1px solid var(--ac-line-soft);
+}
+.theme-allcore360 .case-table td:nth-child(2) {
+  font-weight: 500;
+}
+.theme-allcore360 .case-table td:last-child {
+  color: var(--ac-muted);
+}
+/* Scoped to the table so these outrank the shared cell colour above. */
+.theme-allcore360 .case-table .case-delta {
+  font-weight: 700;
+}
+.theme-allcore360 .case-table .case-delta--up {
+  color: var(--ac-up);
+}
+.theme-allcore360 .case-table .case-delta--down {
+  color: var(--ac-down);
+}
+
+@media (max-width: 767px) {
+  .theme-allcore360 .case-table thead {
+    display: none;
+  }
+  .theme-allcore360 .case-table,
+  .theme-allcore360 .case-table caption,
+  .theme-allcore360 .case-table tbody,
+  .theme-allcore360 .case-table tr,
+  .theme-allcore360 .case-table td {
+    display: block;
+  }
+  .theme-allcore360 .case-table tr {
+    border: 1px solid var(--ac-line);
+    border-radius: var(--ac-radius);
+    padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .theme-allcore360 .case-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    text-align: right;
+    padding: 4px 0;
+    border: 0;
+  }
+  .theme-allcore360 .case-table td::before {
+    content: attr(data-label);
+    font-size: var(--ac-size-label);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ac-muted);
+  }
+  .theme-allcore360 .case-table td:first-child {
+    font-weight: 700;
+  }
+  .theme-allcore360 .case-table td:first-child::before {
+    content: none;
+  }
+}
+
+.theme-allcore360 .case-specs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.theme-allcore360 .case-spec {
+  border: 1px solid var(--ac-night-line);
+  border-radius: var(--ac-radius);
+  padding: 24px;
+}
+.theme-allcore360 .case-spec h3 {
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-salmon);
+  margin-bottom: 10px;
+}
+.theme-allcore360 .case-spec p {
+  font-size: var(--ac-size-body);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ac-night-body);
+}
+
+.theme-allcore360 .case-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 640px;
+}
+.theme-allcore360 .case-step {
+  padding-left: 28px;
+  border-left: 1px solid var(--ac-line);
+}
+.theme-allcore360 .case-step dt {
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+}
+.theme-allcore360 .case-step dd {
+  margin: 8px 0 0;
+  font-size: var(--ac-size-body);
+  color: var(--ac-ink);
+}
+
+/* --- 08. System blocks ------------------------------------------------ */
+.theme-allcore360 .case-subhead {
+  font-size: var(--ac-size-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ac-muted);
+  margin-bottom: 16px;
+}
+
+.theme-allcore360 .case-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--ac-radius);
+  overflow: hidden;
+  max-width: 840px;
+}
+.theme-allcore360 .case-swatches li {
+  flex: 1 0 25%;
+  min-width: 60px;
+  height: 72px;
+  background: var(--swatch);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  font-family: var(--ac-mono);
+  font-size: 9px;
+  color: var(--ac-night-ink);
+}
+.theme-allcore360 .case-swatches li[data-on-light] {
+  color: var(--ac-ink);
+}
+.theme-allcore360 .case-swatches--semantic li {
+  flex: 1 0 50%;
+  min-height: 88px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 12px;
+  gap: 4px;
+}
+.theme-allcore360 .case-swatches--semantic span {
+  font-family: var(--ac-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.theme-allcore360 .case-type li {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ac-line-soft);
+}
+.theme-allcore360 .case-type li + li {
+  margin-top: 12px;
+}
+.theme-allcore360 .case-type b {
+  flex: 0 0 44px;
+  font-family: var(--ac-mono);
+  font-size: var(--ac-size-label);
+  font-weight: 400;
+  color: var(--ac-muted);
+}
+.theme-allcore360 .case-type span {
+  font-size: var(--step);
+  font-weight: 700;
+  letter-spacing: var(--track, 0);
+  line-height: var(--lh, 1.1);
+  color: var(--ac-ink);
+  /* The 60px step would overflow a 360px viewport on its own line. */
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.theme-allcore360 .case-scale-note {
+  max-width: 52ch;
+  margin: -4px 0 20px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ac-body);
+}
+
+.theme-allcore360 .case-radius-scale,
+.theme-allcore360 .case-space-scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: flex-end;
+  max-width: 840px;
+}
+.theme-allcore360 .case-radius-scale li,
+.theme-allcore360 .case-space-scale li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ac-mono);
+  font-size: 11px;
+  color: var(--ac-muted);
+}
+.theme-allcore360 .case-radius-scale b,
+.theme-allcore360 .case-space-scale b {
+  font-weight: 700;
+  color: var(--ac-ink);
+}
+.theme-allcore360 .case-radius-scale span,
+.theme-allcore360 .case-space-scale span {
+  font-weight: 400;
+}
+.theme-allcore360 .case-radius-scale i {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r);
+  background: var(--ac-ink);
+  font-style: normal;
+}
+.theme-allcore360 .case-space-scale i {
+  display: block;
+  width: var(--space);
+  height: 48px;
+  border-radius: 2px;
+  background: var(--ac-red);
+  font-style: normal;
+}
+
+/* --- 09. Close --------------------------------------------------------- */
+.theme-allcore360 .case-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+  margin-inline: auto;
+}
+.theme-allcore360 .case-close .case-title {
+  max-width: 24ch;
+  margin-bottom: 0;
+}
+.theme-allcore360 .case-close .case-lede {
+  max-width: 52ch;
+}
+.theme-allcore360 .case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 12px;
+}
+/* These two CTAs are the one place the button component gets re-skinned.
+   They sit on the near-black closing surface, where the design system's
+   navy fill and navy label would fall below contrast, and the design
+   system has no on-dark treatment to borrow — so they keep AllCore360's
+   palette and geometry. The state matrix is still the component's:
+   default (Active), :hover, :focus-visible (Focused), :active (Pressed)
+   and [aria-disabled] (Inactive). Everything outside .case-close — the
+   header's back link — uses the component untouched. */
+.theme-allcore360 .case-close .btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ac-night-body);
+  --btn-border: transparent;
+  --btn-shadow: none;
+
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-width: 1px;
+  border-radius: var(--ac-radius);
+  font-family: var(--ac-font);
+  font-size: var(--ac-size-body);
+  letter-spacing: -0.01em;
+}
+.theme-allcore360 .case-close .btn:focus-visible { border-radius: var(--ac-radius); }
+
+.theme-allcore360 .case-close .btn--primary {
+  --btn-bg: var(--ac-red);
+  --btn-fg: #fff;
+}
+.theme-allcore360 .case-close .btn--primary:hover {
+  --btn-bg: var(--ac-red-strong);
+  --btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+.theme-allcore360 .case-close .btn--primary:focus-visible { --btn-bg: var(--ac-red-strong); }
+.theme-allcore360 .case-close .btn--primary:active {
+  --btn-bg: var(--ac-red-pressed);
+  --btn-shadow: none;
+}
+
+.theme-allcore360 .case-close .btn--secondary { --btn-border: var(--ac-night-line); }
+.theme-allcore360 .case-close .btn--secondary:hover,
+.theme-allcore360 .case-close .btn--secondary:focus-visible {
+  --btn-bg: var(--ac-night-tint);
+  --btn-border: var(--ac-night-body);
+  --btn-fg: var(--ac-night-ink);
+}
+.theme-allcore360 .case-close .btn--secondary:active {
+  --btn-bg: var(--ac-night-tint-strong);
+  --btn-border: var(--ac-night-body);
+  --btn-fg: var(--ac-night-ink);
+}
+
+.theme-allcore360 .case-close .btn[aria-disabled="true"],
+.theme-allcore360 .case-close .btn:disabled {
+  --btn-bg: transparent;
+  --btn-fg: var(--ac-night-faint);
+  --btn-border: transparent;
+  --btn-shadow: none;
+}
+.theme-allcore360 .case-close .btn--secondary[aria-disabled="true"],
+.theme-allcore360 .case-close .btn--secondary:disabled { --btn-border: var(--ac-night-line); }
+.theme-allcore360 .case-close .btn--primary[aria-disabled="true"],
+.theme-allcore360 .case-close .btn--primary:disabled { --btn-bg: var(--ac-night-line); }
+
+/* --- 10. Footer -------------------------------------------------------- */
+/* Continues the closing section's night surface so the page ends on one
+   uninterrupted block instead of bouncing back to paper. */
+.theme-allcore360 .site-footer {
+  background: var(--ac-night);
+  border-top: 1px solid var(--ac-night-line);
+  padding: clamp(56px, 8vw, 96px) var(--ac-section-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+.theme-allcore360 .footer-cta {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ac-night-ink);
+}
+.theme-allcore360 .footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.theme-allcore360 .footer-icons {
+  display: flex;
+  gap: 16px;
+}
+.theme-allcore360 .icon-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--ac-night-line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+/* The shared icon set is drawn dark; on the night surface it needs to
+   be flipped rather than swapped for a second set of files. */
+.theme-allcore360 .icon-btn img {
+  filter: invert(1);
+  opacity: 0.75;
+}
+.theme-allcore360 .icon-btn:hover {
+  border-color: var(--ac-salmon);
+  background: var(--ac-night-tint);
+}
+.theme-allcore360 .icon-btn:hover img {
+  opacity: 1;
+}
+.theme-allcore360 .icon-btn:active {
+  border-color: var(--ac-salmon);
+  background: var(--ac-night-tint-strong);
+}
+.theme-allcore360 .copyright {
+  font-size: var(--ac-size-label);
+  letter-spacing: 0.02em;
+  color: var(--ac-night-faint);
+}
+
+/* ===================================================================
+   Breakpoints
+   =================================================================== */
+@media (min-width: 768px) {
+  .theme-allcore360 .case-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .theme-allcore360 .case-compare {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .theme-allcore360 .case-specs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .theme-allcore360 .case-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .theme-allcore360 .case-step {
+    padding-inline: 28px;
+  }
+  .theme-allcore360 .case-swatches li {
+    flex-basis: 16.666%;
+    height: 88px;
+  }
+  .theme-allcore360 .case-swatches--semantic li {
+    flex-basis: 25%;
+    height: auto;
+    min-height: 96px;
+  }
+  .theme-allcore360 .case-type b {
+    flex-basis: 56px;
+  }
+  .theme-allcore360 .footer-links {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Clears the fixed ruler in the left margin. */
+  .theme-allcore360 .case-section {
+    padding-left: 140px;
+  }
+  /* Centered sections need the gutter on both sides or the extra left
+     padding pushes their axis off the middle of the page. */
+  .theme-allcore360 .case-hero,
+  .theme-allcore360 .case-section--center {
+    padding-right: 140px;
+  }
+  .theme-allcore360 .case-swatches li {
+    flex-basis: 8.333%;
+  }
+  .theme-allcore360 .case-swatches--semantic li {
+    flex-basis: 25%;
+  }
+  .theme-allcore360 .case-roles {
+    flex-wrap: nowrap;
+  }
+  .theme-allcore360 .case-roles-dial {
+    flex: 0 0 420px;
+    width: 420px;
+  }
+}
+
+/* Past the shell width the left-aligned column starts to look stranded,
+   so it re-centers instead of hugging the ruler. */
+@media (min-width: 1600px) {
+  .theme-allcore360 .case-shell {
+    margin-inline: auto;
+  }
+}

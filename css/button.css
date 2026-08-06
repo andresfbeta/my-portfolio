@@ -1,0 +1,133 @@
+/* ===================================================================
+   BUTTON
+   Source: Figma "Design System — Andrés Betancourt"
+     component  _Master/Button   12:4328
+     matrix     Botones          12:4503
+
+   Five styles x five states, read straight off the Figma frame. The
+   rows are the styles and the columns are the states, in this order:
+
+                    Active     Hover        Focused    Pressed    Inactive
+     Primary        navy       navy+lift    navy 400   navy 400   gray fill
+     Secondary      teal edge  teal wash    teal wash  teal wash  gray edge
+     Text           bare       teal wash    teal wash  teal wash  gray ink
+     Link           bare+rule  teal wash    teal wash  teal wash  gray ink
+     Text No Pad.   bare       teal wash    teal wash  teal wash  gray ink
+
+   Every style keeps the navy label except Primary, which flips to
+   off white, and Inactive, which goes gray. States map to CSS as
+   default = Active, :hover, :focus-visible = Focused, :active =
+   Pressed, and :disabled / [aria-disabled="true"] = Inactive.
+
+   This file is loaded on its own by every page, including the
+   client-skinned case studies, so the component reads identically
+   everywhere. The Figma literals sit as fallbacks behind the token
+   names, which is what lets a page use the component without also
+   pulling in the portfolio's whole token layer.
+   =================================================================== */
+.btn {
+  --btn-navy: var(--color-primary, #123d6e);
+  --btn-navy-soft: var(--color-primary-400, #41648b);
+  --btn-teal: var(--color-secondary, #00b7c2);
+  --btn-teal-wash: var(--color-secondary-200, #99e2e7);
+  --btn-on-fill: var(--color-off-white, #f5f5f5);
+  --btn-off-fill: var(--color-gray-200, #d2d1d4);
+  --btn-off-ink: var(--color-gray-400, #8f8d93);
+  --btn-lift: var(
+    --elevation-base,
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 6px 2px rgba(0, 0, 0, 0.15)
+  );
+
+  --btn-bg: transparent;
+  --btn-fg: var(--btn-navy);
+  --btn-border: transparent;
+  --btn-shadow: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-s, 8px);
+  min-height: var(--scale-40, 40px);
+  padding: var(--spacing-s, 8px) var(--spacing-md, 16px);
+  border: 2px solid var(--btn-border);
+  border-radius: var(--radius-lg, 8px);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: var(--btn-shadow);
+  font-family: var(--font-family, 'DM Sans', sans-serif);
+  font-size: var(--type-button-size, 14px);
+  line-height: var(--type-button-line-height, 20px);
+  letter-spacing: var(--type-button-tracking, 0.25px);
+  font-weight: var(--font-weight-bold, 700);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.btn > img,
+.btn > svg {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+/* Page-level focus rings round every control to 4px; a button keeps the
+   corner it already has. */
+.btn:focus-visible { border-radius: var(--radius-lg, 8px); }
+.btn--block { width: 100%; }
+
+.btn--primary {
+  --btn-bg: var(--btn-navy);
+  --btn-fg: var(--btn-on-fill);
+}
+/* Hover holds the fill and adds the Base effect style; only Focused and
+   Pressed lighten it. */
+.btn--primary:hover { --btn-shadow: var(--btn-lift); }
+.btn--primary:focus-visible,
+.btn--primary:active {
+  --btn-bg: var(--btn-navy-soft);
+  --btn-shadow: none;
+}
+
+.btn--secondary { --btn-border: var(--btn-teal); }
+.btn--secondary:hover,
+.btn--secondary:focus-visible,
+.btn--secondary:active { --btn-bg: var(--btn-teal-wash); }
+
+.btn--text:hover,
+.btn--text:focus-visible,
+.btn--text:active { --btn-bg: var(--btn-teal-wash); }
+
+.btn--link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.btn--link:hover,
+.btn--link:focus-visible,
+.btn--link:active { --btn-bg: var(--btn-teal-wash); }
+
+.btn--plain {
+  min-height: 0;
+  padding: 0 var(--spacing-xs, 4px);
+  border-width: 0;
+  border-radius: var(--radius-base, 4px);
+}
+.btn--plain:focus-visible { border-radius: var(--radius-base, 4px); }
+.btn--plain:hover,
+.btn--plain:focus-visible,
+.btn--plain:active { --btn-bg: var(--btn-teal-wash); }
+
+/* Inactive comes last so it outranks the interactive states above. */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  --btn-bg: transparent;
+  --btn-fg: var(--btn-off-ink);
+  --btn-border: transparent;
+  --btn-shadow: none;
+  cursor: not-allowed;
+}
+.btn--primary:disabled,
+.btn--primary[aria-disabled="true"] { --btn-bg: var(--btn-off-fill); }
+.btn--secondary:disabled,
+.btn--secondary[aria-disabled="true"] { --btn-border: var(--btn-off-ink); }

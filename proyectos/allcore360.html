@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="ac.docTitle">AllCore360º — Case study · Andrés Betancourt</title>
+<meta name="description" content="Case study: designing the control system for the AllCore360º physical therapy machine — seven roles across four surfaces, built on a Radix Themes design system in Figma." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16.png" />
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" />
+<meta name="theme-color" content="#E51519" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- AllCore360º runs on Roboto, not the portfolio's DM Sans: this page is
+     styled as the client's own product surface. -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<!-- DM Sans is here only for the portfolio chrome that this page keeps:
+     the back link is the portfolio's button component, unaltered. -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/case-allcore360.css" />
+<link rel="stylesheet" href="../css/button.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="theme-allcore360">
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header site-header--project">
+  <a class="logo" href="../index.html" data-i18n-attr="aria-label:a11y.home">
+    <img src="../assets/icons/logo.svg" alt="" width="32" height="32" />
+  </a>
+
+  <a class="btn btn--text back-link" href="../index.html#projects">
+    <img src="../assets/icons/arrow-back.svg" alt="" width="16" height="16" />
+    <span data-i18n="ac.back">Back to portfolio</span>
+  </a>
+
+  <p class="header-project">
+    <img src="../assets/images/brands/allcore360.svg" alt="AllCore360º" width="72" height="24" />
+  </p>
+
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button type="button" data-lang-option="es" aria-pressed="false">ES</button>
+    <span class="lang-sep" aria-hidden="true">/</span>
+    <button type="button" data-lang-option="en" aria-pressed="true">EN</button>
+  </div>
+</header>
+
+<main id="main" class="case">
+
+  <!-- Reading progress, styled as a 360° dial unrolled into a rail. -->
+  <div class="case-ruler" aria-hidden="true">
+    <span class="case-ruler-track"></span>
+    <span class="case-ruler-ticks"></span>
+    <span class="case-ruler-fill"></span>
+    <span class="case-ruler-mark" style="--p: 0"><span>000°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.125"><span>045°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.25"><span>090°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.375"><span>135°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.5"><span>180°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.625"><span>225°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.75"><span>270°</span></span>
+    <span class="case-ruler-mark" style="--p: 0.875"><span>315°</span></span>
+    <span class="case-ruler-mark" style="--p: 1"><span>360°</span></span>
+  </div>
+
+  <!-- 1. HERO -->
+  <section class="case-section case-hero" aria-labelledby="case-heading">
+    <div class="case-hero-intro">
+      <svg class="case-hero-dial" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+        <g>
+          <line x1="300.0" y1="35.0" x2="300.0" y2="15.0" />
+          <line x1="346.0" y1="39.0" x2="349.5" y2="19.3" />
+          <line x1="390.6" y1="51.0" x2="397.5" y2="32.2" />
+          <line x1="432.5" y1="70.5" x2="442.5" y2="53.2" />
+          <line x1="470.3" y1="97.0" x2="483.2" y2="81.7" />
+          <line x1="503.0" y1="129.7" x2="518.3" y2="116.8" />
+          <line x1="529.5" y1="167.5" x2="546.8" y2="157.5" />
+          <line x1="549.0" y1="209.4" x2="567.8" y2="202.5" />
+          <line x1="561.0" y1="254.0" x2="580.7" y2="250.5" />
+          <line x1="565.0" y1="300.0" x2="585.0" y2="300.0" />
+          <line x1="561.0" y1="346.0" x2="580.7" y2="349.5" />
+          <line x1="549.0" y1="390.6" x2="567.8" y2="397.5" />
+          <line x1="529.5" y1="432.5" x2="546.8" y2="442.5" />
+          <line x1="503.0" y1="470.3" x2="518.3" y2="483.2" />
+          <line x1="470.3" y1="503.0" x2="483.2" y2="518.3" />
+          <line x1="432.5" y1="529.5" x2="442.5" y2="546.8" />
+          <line x1="390.6" y1="549.0" x2="397.5" y2="567.8" />
+          <line x1="346.0" y1="561.0" x2="349.5" y2="580.7" />
+          <line x1="300.0" y1="565.0" x2="300.0" y2="585.0" />
+          <line x1="254.0" y1="561.0" x2="250.5" y2="580.7" />
+          <line x1="209.4" y1="549.0" x2="202.5" y2="567.8" />
+          <line x1="167.5" y1="529.5" x2="157.5" y2="546.8" />
+          <line x1="129.7" y1="503.0" x2="116.8" y2="518.3" />
+          <line x1="97.0" y1="470.3" x2="81.7" y2="483.2" />
+          <line x1="70.5" y1="432.5" x2="53.2" y2="442.5" />
+          <line x1="51.0" y1="390.6" x2="32.2" y2="397.5" />
+          <line x1="39.0" y1="346.0" x2="19.3" y2="349.5" />
+          <line x1="35.0" y1="300.0" x2="15.0" y2="300.0" />
+          <line x1="39.0" y1="254.0" x2="19.3" y2="250.5" />
+          <line x1="51.0" y1="209.4" x2="32.2" y2="202.5" />
+          <line x1="70.5" y1="167.5" x2="53.2" y2="157.5" />
+          <line x1="97.0" y1="129.7" x2="81.7" y2="116.8" />
+          <line x1="129.7" y1="97.0" x2="116.8" y2="81.7" />
+          <line x1="167.5" y1="70.5" x2="157.5" y2="53.2" />
+          <line x1="209.4" y1="51.0" x2="202.5" y2="32.2" />
+          <line x1="254.0" y1="39.0" x2="250.5" y2="19.3" />
+        </g>
+        <circle cx="300" cy="300" r="260" />
+      </svg>
+
+      <span class="case-kicker" data-i18n="ac.hero.kicker">Product design — case study</span>
+      <h1 id="case-heading">AllCore360º</h1>
+      <p class="case-hero-lede" data-i18n="ac.hero.lede">
+        The control system for a physical therapy machine — one product, four surfaces, seven roles, and a touchscreen bolted to equipment in gyms and clinics.
+      </p>
+      <ul class="case-meta">
+        <li><span><b data-i18n="ac.hero.roleLabel">Role</b> — <span data-i18n="ac.hero.role">Senior Product Designer</span></span></li>
+        <li><span><b data-i18n="ac.hero.surfacesLabel">Surfaces</b> — <span data-i18n="ac.hero.surfaces">Web, Mobile, SBC Operator, SBC Technician</span></span></li>
+        <li><span><b data-i18n="ac.hero.toolsLabel">Tools</b> — Figma, Figma Libraries, Figma Make, Claude</span></li>
+      </ul>
+    </div>
+
+    <figure class="case-hero-figure">
+      <div class="case-shot">
+        <img src="../assets/images/projects/allcore360.png" alt="" data-i18n-attr="alt:ac.hero.shotAlt" />
+      </div>
+      <figcaption class="case-caption" data-i18n="ac.hero.caption">Web · user management · role-scoped</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2. THE CHALLENGE -->
+  <section class="case-section case-reveal" aria-labelledby="case-challenge">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.challenge.kicker">The challenge</span>
+        <h2 class="case-title" id="case-challenge" data-i18n="ac.challenge.title">Permissions aren't a single table. They're a table times four.</h2>
+        <p class="case-lede" data-i18n="ac.challenge.lede">
+          AllCore360º has seven roles — GAM, AM, OA, FA-Admin, FA-User, Technician, Rider — but permissions aren't defined once. The same Organization Admin gets a full CRM on desktop and a deliberately narrower "Operator" view on the machine itself. The permission model gets redeclared per surface, not just per role.
+        </p>
+      </div>
+
+      <div class="case-roles">
+        <svg class="case-roles-dial" viewBox="0 0 500 500" role="img" data-i18n-attr="aria-label:ac.challenge.dialAlt" aria-label="Concentric arcs showing how much of the product each of the seven roles can reach, from a full ring for GAM down to a sliver for Rider.">
+          <g class="case-roles-bg" fill="none" stroke-width="12">
+            <circle cx="250" cy="250" r="220" />
+            <circle cx="250" cy="250" r="190" />
+            <circle cx="250" cy="250" r="160" />
+            <circle cx="250" cy="250" r="130" />
+            <circle cx="250" cy="250" r="100" />
+            <circle cx="250" cy="250" r="70" />
+            <circle cx="250" cy="250" r="40" />
+          </g>
+          <g class="case-roles-arc" fill="none" stroke-width="12" stroke-linecap="butt">
+            <circle cx="250" cy="250" r="220" opacity="1" />
+            <path d="M 250.00 60.00 A 190 190 0 1 1 85.46 155.00" opacity="0.92" />
+            <path d="M 250.00 90.00 A 160 160 0 1 1 195.28 400.35" opacity="0.84" />
+            <path d="M 250.00 120.00 A 130 130 0 0 1 333.56 349.59" opacity="0.76" />
+            <path d="M 250.00 150.00 A 100 100 0 0 1 343.97 284.20" opacity="0.68" />
+            <path d="M 250.00 180.00 A 70 70 0 0 1 310.62 215.00" opacity="0.6" />
+            <path d="M 250.00 210.00 A 40 40 0 0 1 263.68 212.41" opacity="0.52" />
+          </g>
+        </svg>
+        <ul class="case-roles-legend">
+          <li><b>GAM</b> — <span data-i18n="ac.role.gam">360° full ring</span></li>
+          <li><b>AM</b> — <span data-i18n="ac.role.am">~300°</span></li>
+          <li><b>OA</b> — <span data-i18n="ac.role.oa">~200°</span></li>
+          <li><b>FA-Admin</b> — <span data-i18n="ac.role.faAdmin">~140°</span></li>
+          <li><b>FA-User</b> — <span data-i18n="ac.role.faUser">~110°</span></li>
+          <li><b>Technician</b> — <span data-i18n="ac.role.technician">~60°, machine-scoped rather than org-scoped</span></li>
+          <li><b>Rider</b> — <span data-i18n="ac.role.rider">~20° sliver</span></li>
+        </ul>
+      </div>
+
+      <dl class="case-stats">
+        <div class="case-stat"><dd>123</dd><dt data-i18n="ac.stat.features">Features mapped</dt></div>
+        <div class="case-stat"><dd>7</dd><dt data-i18n="ac.stat.roles">Roles</dt></div>
+        <div class="case-stat"><dd>4</dd><dt data-i18n="ac.stat.surfaces">Surfaces</dt></div>
+        <div class="case-stat"><dd>5</dd><dt data-i18n="ac.stat.levels">Levels of hierarchy</dt></div>
+      </dl>
+
+      <p class="case-subhead" data-i18n="ac.challenge.hierarchy">Organization → Facility → Machine → Users → Riders</p>
+
+      <p class="case-pull" data-i18n="ac.challenge.pull">
+        Every screen had to answer two questions: who's looking, and from which surface?
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. THE FOUR SURFACES -->
+  <section class="case-section case-section--tint case-reveal" aria-labelledby="case-surfaces">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.surfaces.kicker">One system, four surfaces</span>
+        <h2 class="case-title" id="case-surfaces" data-i18n="ac.surfaces.title">Same product. Four completely different contexts.</h2>
+        <p class="case-lede" data-i18n="ac.surfaces.note">Same design tokens. Four different jobs to be done.</p>
+      </div>
+
+      <div class="case-tabs" data-case-tabs>
+        <div class="case-tablist" role="tablist" data-i18n-attr="aria-label:ac.surfaces.tablistLabel" aria-label="Product surfaces">
+          <button class="case-tab" type="button" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="true" data-i18n="ac.tab.web">Web</button>
+          <button class="case-tab" type="button" role="tab" id="tab-mobile" aria-controls="panel-mobile" aria-selected="false" tabindex="-1" data-i18n="ac.tab.mobile">Mobile app</button>
+          <button class="case-tab" type="button" role="tab" id="tab-operator" aria-controls="panel-operator" aria-selected="false" tabindex="-1" data-i18n="ac.tab.operator">SBC Operator</button>
+          <button class="case-tab" type="button" role="tab" id="tab-technician" aria-controls="panel-technician" aria-selected="false" tabindex="-1" data-i18n="ac.tab.technician">SBC Technician</button>
+        </div>
+
+        <div class="case-tabpanel" role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0">
+          <p class="case-lede" data-i18n="ac.surface.web">Full back office — organizations, facilities, machines, users, riders and reports.</p>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 16 / 10" data-i18n="ac.shot.web">Screenshot — web organization management</div>
+        </div>
+        <div class="case-tabpanel" role="tabpanel" id="panel-mobile" aria-labelledby="tab-mobile" tabindex="0" hidden>
+          <p class="case-lede" data-i18n="ac.surface.mobile">The same account and management flows scoped for a phone — same Code Connect components, different layout rules.</p>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 9 / 16; max-width: 260px" data-i18n="ac.shot.mobile">Screenshot — mobile my account</div>
+        </div>
+        <div class="case-tabpanel" role="tabpanel" id="panel-operator" aria-labelledby="tab-operator" tabindex="0" hidden>
+          <p class="case-lede" data-i18n="ac.surface.operator">What OA, FA and Rider see standing at the machine — session and evaluation flows, countdowns, no-connection states, emergency stop.</p>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 16 / 10" data-i18n="ac.shot.operator">Screenshot — SBC operator session flow</div>
+        </div>
+        <div class="case-tabpanel" role="tabpanel" id="panel-technician" aria-labelledby="tab-technician" tabindex="0" hidden>
+          <p class="case-lede" data-i18n="ac.surface.technician">AllCore360º's own field employees — machine calibration, R/T axis setup, alarms, and onboarding a machine for the first time.</p>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 16 / 10" data-i18n="ac.shot.technician">Screenshot — SBC technician calibration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROCESS -->
+  <section class="case-section case-reveal" aria-labelledby="case-process">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.process.kicker">Process</span>
+        <h2 class="case-title" id="case-process" data-i18n="ac.process.title">Figma for the system. Claude for the thinking. Figma Make for the prototype.</h2>
+        <p class="case-lede" data-i18n="ac.process.lede">
+          I built the design system in Figma — components, variables, Auto Layout, and shared Figma libraries — on top of Radix Themes' own structural conventions. Claude, run locally through Claude Cowork, acted as a technical thinking partner: reasoning through the 7-role × 4-surface permission model and the archive/cascade logic, running accessibility checks, critiquing new designs, and helping brainstorm and ideate new screens and components. Figma Make turned key flows into functional prototypes I could put in front of clients before anything reached development. Every ready frame in the Figma file is flagged "Ready for dev" — a lightweight status system that kept handoff honest.
+        </p>
+      </div>
+
+      <dl class="case-steps">
+        <div class="case-step"><dt data-i18n="ac.step.structure">Structure</dt><dd>Figma</dd></div>
+        <div class="case-step"><dt data-i18n="ac.step.reason">Reason</dt><dd>Claude</dd></div>
+        <div class="case-step"><dt data-i18n="ac.step.ship">Prototype</dt><dd data-i18n="ac.step.shipTool">Figma Make</dd></div>
+      </dl>
+
+      <p class="case-pull" data-i18n="ac.process.pull">
+        AI didn't replace the design decisions — it removed the friction between making them and showing them working.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. PROOF I — DATA INTEGRITY -->
+  <section class="case-section case-reveal" aria-labelledby="case-proof-data">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.data.kicker">A close look — data integrity</span>
+        <h2 class="case-title" id="case-proof-data" data-i18n="ac.data.title">When the dashboard math didn't add up.</h2>
+        <p class="case-lede" data-i18n="ac.data.lede">
+          The Active Records table had its month-over-month badge next to the previous period's value instead of the current one, breaking the natural left-to-right read. The percentages didn't match (current − previous) / previous, so some arrows pointed the wrong way. Fixing it meant defining the rolling-period rule the whole table should follow, not just moving a badge.
+        </p>
+      </div>
+
+      <div class="case-compare">
+        <figure>
+          <figcaption class="case-caption" data-i18n="ac.data.before">Before</figcaption>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 16 / 10" data-i18n="ac.shot.before">Screenshot — badge on the previous-period column</div>
+        </figure>
+        <figure>
+          <figcaption class="case-caption" data-i18n="ac.data.after">After</figcaption>
+          <div class="case-shot case-shot--empty" style="aspect-ratio: 16 / 10" data-i18n="ac.shot.after">Screenshot — badge on the current-period column</div>
+        </figure>
+      </div>
+
+      <table class="case-table">
+        <caption class="case-subhead" data-i18n="ac.data.tableCaption">Active records — corrected rolling period</caption>
+        <thead>
+          <tr>
+            <th scope="col" data-i18n="ac.table.record">Record</th>
+            <th scope="col" data-i18n="ac.table.current">Feb 2026</th>
+            <th scope="col" data-i18n="ac.table.change">Change</th>
+            <th scope="col" data-i18n="ac.table.previous">Jan 2026</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="ac.record.orgs">Active organizations</td>
+            <td data-i18n-attr="data-label:ac.table.current" data-label="Feb 2026">44</td>
+            <td class="case-delta case-delta--down" data-i18n-attr="data-label:ac.table.change" data-label="Change">↓ 12%</td>
+            <td data-i18n-attr="data-label:ac.table.previous" data-label="Jan 2026">50</td>
+          </tr>
+          <tr>
+            <td data-i18n="ac.record.facilities">Active facilities</td>
+            <td data-i18n-attr="data-label:ac.table.current" data-label="Feb 2026">78</td>
+            <td class="case-delta case-delta--up" data-i18n-attr="data-label:ac.table.change" data-label="Change">↑ 4%</td>
+            <td data-i18n-attr="data-label:ac.table.previous" data-label="Jan 2026">75</td>
+          </tr>
+          <tr>
+            <td data-i18n="ac.record.machines">Active machines</td>
+            <td data-i18n-attr="data-label:ac.table.current" data-label="Feb 2026">21</td>
+            <td class="case-delta case-delta--up" data-i18n-attr="data-label:ac.table.change" data-label="Change">↑ 5%</td>
+            <td data-i18n-attr="data-label:ac.table.previous" data-label="Jan 2026">20</td>
+          </tr>
+          <tr>
+            <td data-i18n="ac.record.riders">Active riders</td>
+            <td data-i18n-attr="data-label:ac.table.current" data-label="Feb 2026">55</td>
+            <td class="case-delta case-delta--up" data-i18n-attr="data-label:ac.table.change" data-label="Change">↑ 10%</td>
+            <td data-i18n-attr="data-label:ac.table.previous" data-label="Jan 2026">50</td>
+          </tr>
+          <tr>
+            <td data-i18n="ac.record.newRiders">New riders</td>
+            <td data-i18n-attr="data-label:ac.table.current" data-label="Feb 2026">23</td>
+            <td class="case-delta case-delta--up" data-i18n-attr="data-label:ac.table.change" data-label="Change">↑ 15%</td>
+            <td data-i18n-attr="data-label:ac.table.previous" data-label="Jan 2026">20</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="case-pull" data-i18n="ac.data.pull">
+        Good product design isn't just the interface — it's making sure the interface never lies.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. PROOF II — PHYSICAL SAFETY -->
+  <section class="case-section case-section--dark case-reveal" aria-labelledby="case-proof-safety">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.safety.kicker">A close look — physical safety</span>
+        <h2 class="case-title" id="case-proof-safety" data-i18n="ac.safety.title">When the interface controls something that can hurt you.</h2>
+        <p class="case-lede" data-i18n="ac.safety.lede">
+          The SBC isn't just a touchscreen — it triggers real physical movement. Every ride and evaluation launch runs through a visible countdown (3… 2… 1… then a running timer) before the machine moves, so the rider is never caught off guard. The emergency-stop control has its own first-class states — pressed and released — each with a dedicated alert screen. And because the machine can lose its network connection mid-session, every key SBC screen has a systematically designed "No connection" counterpart, not a generic error toast.
+        </p>
+      </div>
+
+      <div class="case-specs">
+        <article class="case-spec">
+          <h3 data-i18n="ac.spec.countdown">Countdown</h3>
+          <p data-i18n="ac.spec.countdownBody">Always shown before physical movement.</p>
+        </article>
+        <article class="case-spec">
+          <h3 data-i18n="ac.spec.estop">Emergency stop</h3>
+          <p data-i18n="ac.spec.estopBody">Pressed and released are first-class states.</p>
+        </article>
+        <article class="case-spec">
+          <h3 data-i18n="ac.spec.offline">Offline</h3>
+          <p data-i18n="ac.spec.offlineBody">Every key screen has a no-connection pair.</p>
+        </article>
+      </div>
+
+      <p class="case-pull" data-i18n="ac.safety.pull">
+        Safety-critical interfaces don't get a second draft. The countdown and the E-stop state existed before the rest of the screen did.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. THE SYSTEM -->
+  <section class="case-section case-reveal" aria-labelledby="case-system">
+    <div class="case-shell case-flow">
+      <div class="case-intro">
+        <span class="case-kicker" data-i18n="ac.system.kicker">Foundation</span>
+        <h2 class="case-title" id="case-system" data-i18n="ac.system.title">Built on Radix Themes — one system, every surface.</h2>
+        <p class="case-lede" data-i18n="ac.system.lede">
+          The design system runs on Radix Themes' own structural conventions — a 12-step accent (custom), neutral (slate), and semantic scales (green, red, amber, sky), each with alpha variants, medium radius, 100% scaling, and Roboto carrying a 9-step type scale — mapped directly to code through Figma variables and Code Connect, so engineering never had to guess a value across four surfaces.
+        </p>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.accent">Accent — custom, 12 steps</p>
+        <ul class="case-swatches">
+          <li style="--swatch: #170f0d">#170F0D</li>
+          <li style="--swatch: #211311">#211311</li>
+          <li style="--swatch: #3e100d">#3E100D</li>
+          <li style="--swatch: #550606">#550606</li>
+          <li style="--swatch: #670d0b">#670D0B</li>
+          <li style="--swatch: #781c17">#781C17</li>
+          <li style="--swatch: #922d26">#922D26</li>
+          <li style="--swatch: #bd3b32">#BD3B32</li>
+          <li style="--swatch: #e51519">#E51519</li>
+          <li style="--swatch: #d50000">#D50000</li>
+          <li style="--swatch: #ff9082" data-on-light>#FF9082</li>
+          <li style="--swatch: #ffd0c9" data-on-light>#FFD0C9</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.neutral">Neutral — slate, 12 steps</p>
+        <ul class="case-swatches">
+          <li style="--swatch: #111113">#111113</li>
+          <li style="--swatch: #18191b">#18191B</li>
+          <li style="--swatch: #212225">#212225</li>
+          <li style="--swatch: #272a2d">#272A2D</li>
+          <li style="--swatch: #2e3135">#2E3135</li>
+          <li style="--swatch: #363a3f">#363A3F</li>
+          <li style="--swatch: #43484e">#43484E</li>
+          <li style="--swatch: #5a6169">#5A6169</li>
+          <li style="--swatch: #696e77">#696E77</li>
+          <li style="--swatch: #777b84">#777B84</li>
+          <li style="--swatch: #b0b4ba" data-on-light>#B0B4BA</li>
+          <li style="--swatch: #edeef0" data-on-light>#EDEEF0</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.semantic">Semantic — solid (step 9)</p>
+        <ul class="case-swatches case-swatches--semantic">
+          <li style="--swatch: #30a46c"><span data-i18n="ac.system.success">Success</span>#30A46C</li>
+          <li style="--swatch: #e5484d"><span data-i18n="ac.system.error">Error</span>#E5484D</li>
+          <li style="--swatch: #ffc53d" data-on-light><span data-i18n="ac.system.warning">Warning</span>#FFC53D</li>
+          <li style="--swatch: #7ce2fe" data-on-light><span data-i18n="ac.system.info">Info</span>#7CE2FE</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.type">Type — Roboto, 9 steps</p>
+        <ul class="case-type">
+          <li style="--step: 12px; --lh: 16px; --track: 0.0025em"><b>12</b><span>AllCore360º</span></li>
+          <li style="--step: 14px; --lh: 20px; --track: 0em"><b>14</b><span>AllCore360º</span></li>
+          <li style="--step: 16px; --lh: 24px; --track: 0em"><b>16</b><span>AllCore360º</span></li>
+          <li style="--step: 18px; --lh: 26px; --track: -0.0025em"><b>18</b><span>AllCore360º</span></li>
+          <li style="--step: 20px; --lh: 28px; --track: -0.005em"><b>20</b><span>AllCore360º</span></li>
+          <li style="--step: 24px; --lh: 30px; --track: -0.00625em"><b>24</b><span>AllCore360º</span></li>
+          <li style="--step: 28px; --lh: 36px; --track: -0.0075em"><b>28</b><span>AllCore360º</span></li>
+          <li style="--step: 35px; --lh: 40px; --track: -0.01em"><b>35</b><span>AllCore360º</span></li>
+          <li style="--step: 60px; --lh: 60px; --track: -0.025em"><b>60</b><span>AllCore360º</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.radius">Radius — medium scale</p>
+        <p class="case-scale-note" data-i18n="ac.system.radiusNote">
+          The theme locks Radix’s radius setting to medium. Components then pick from these six steps — buttons, inputs, cards, dialogs — instead of inventing a corner each time.
+        </p>
+        <ul class="case-radius-scale">
+          <li style="--r: 3px"><b>1</b><span>3px</span><i aria-hidden="true"></i></li>
+          <li style="--r: 4px"><b>2</b><span>4px</span><i aria-hidden="true"></i></li>
+          <li style="--r: 6px"><b>3</b><span>6px</span><i aria-hidden="true"></i></li>
+          <li style="--r: 8px"><b>4</b><span>8px</span><i aria-hidden="true"></i></li>
+          <li style="--r: 12px"><b>5</b><span>12px</span><i aria-hidden="true"></i></li>
+          <li style="--r: 16px"><b>6</b><span>16px</span><i aria-hidden="true"></i></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="case-subhead" data-i18n="ac.system.space">Space — 100% scaling</p>
+        <p class="case-scale-note" data-i18n="ac.system.spaceNote">
+          Spacing tokens at 100% scaling: the nine steps used for padding, gaps, and control heights across every surface.
+        </p>
+        <ul class="case-space-scale">
+          <li style="--space: 4px"><b>1</b><span>4px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 8px"><b>2</b><span>8px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 12px"><b>3</b><span>12px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 16px"><b>4</b><span>16px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 24px"><b>5</b><span>24px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 32px"><b>6</b><span>32px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 40px"><b>7</b><span>40px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 48px"><b>8</b><span>48px</span><i aria-hidden="true"></i></li>
+          <li style="--space: 64px"><b>9</b><span>64px</span><i aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CLOSE -->
+  <section class="case-section case-section--dark case-section--center case-reveal" aria-labelledby="case-close">
+    <div class="case-shell case-close">
+      <h2 class="case-title" id="case-close" data-i18n="ac.close.title">Complex systems don't need complicated interfaces. They need clear ones.</h2>
+      <p class="case-lede" data-i18n="ac.close.lede">
+        Designing for seven roles across four surfaces — one of them physically moving — forced a clarity a single-surface product never would have required.
+      </p>
+      <div class="case-actions">
+        <a class="btn btn--primary" href="../index.html#projects" data-i18n="ac.close.more">See more work</a>
+        <a class="btn btn--secondary" href="mailto:andres.betancourt.di@outlook.com" data-i18n="ac.close.contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+  <h2 class="footer-cta" data-i18n="footer.cta">Let's work together!</h2>
+  <div class="footer-links">
+    <div class="footer-icons">
+      <a class="icon-btn" href="mailto:andres.betancourt.di@outlook.com" data-i18n-attr="aria-label:footer.email.label">
+        <img src="../assets/icons/email.svg" alt="" width="16" height="16" />
+      </a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/andres-betancourt-06604a171/" target="_blank" rel="noopener noreferrer" data-i18n-attr="aria-label:footer.linkedin.label">
+        <img src="../assets/icons/linkedin.svg" alt="" width="16" height="16" />
+      </a>
+    </div>
+    <p class="copyright">© <span id="copyright-year">2026</span> Andrés Betancourt</p>
+  </div>
+</footer>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/i18n-allcore360.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/case-study.js"></script>
+</body>
+</html>

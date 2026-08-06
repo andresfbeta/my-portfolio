@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__9ae46c95-102a-47f2-bdf1-d0d85ed17711__get_metadata",
+      "mcp__9ae46c95-102a-47f2-bdf1-d0d85ed17711__get_design_context",
+      "Bash(python3 -c ' *)",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-andresfelipebetancourtcollazos-Downloads-Mis-Proyectos-My-Portfolio/46e04846-85f2-4203-bccf-60d210927943/scratchpad)",
+      "Bash(grep -noE '>[^<>{}]{3,}<' \"/private/tmp/claude-501/-Users-andresfelipebetancourtcollazos-Downloads-Mis-Proyectos-My-Portfolio/46e04846-85f2-4203-bccf-60d210927943/scratchpad/design_context_code.tsx\")",
+      "Bash(grep -v \"^[0-9]*:>\\\\\\\\s*<$\")",
+      "Bash(grep -nE '^\\\\s*[A-Za-zÁÉÍÓÚÑáéíóúñ0-9¡¿].*[^>]$' \"/private/tmp/claude-501/-Users-andresfelipebetancourtcollazos-Downloads-Mis-Proyectos-My-Portfolio/46e04846-85f2-4203-bccf-60d210927943/scratchpad/design_context_code.tsx\")",
+      "mcp__9ae46c95-102a-47f2-bdf1-d0d85ed17711__get_variable_defs",
+      "Bash(awk -F'\"' '{print $2, $4}')",
+      "Bash(curl -s -o mobile_portrait.png \"https://www.figma.com/api/mcp/asset/36ccf905-5141-4cb4-ba17-642e2db00f77.png\")",
+      "Bash(curl -s -o mobile_ellipse52.svg \"https://www.figma.com/api/mcp/asset/04d7bfea-6846-42b6-9693-d6400400a351.svg\")",
+      "Bash(curl -s -o mobile_file1_mask.svg \"https://www.figma.com/api/mcp/asset/cea5c388-c0e1-4369-b93c-b9280a0ca2cc.svg\")",
+      "Bash(curl -s -o mobile_logo2.png \"https://www.figma.com/api/mcp/asset/895774a1-c09e-4c74-a728-57380a6b800d.png\")",
+      "Bash(python3)",
+      "Bash(node --check js/i18n-allcore360.js)"
+    ]
+  }
+}
