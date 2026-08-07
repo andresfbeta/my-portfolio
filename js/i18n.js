@@ -3,6 +3,11 @@ const translations = {
     "site.docTitle": "Andrés Betancourt — Product Designer",
     "a11y.skip": "Skip to content",
     "a11y.home": "Andrés Betancourt — home",
+    "a11y.lang": "Language",
+    "a11y.lightbox": "Expanded image",
+    "a11y.close": "Close",
+    "a11y.expandImage": "Expand image",
+    "a11y.expandPrefix": "Expand",
 
     "nav.about": "About me",
     "nav.projects": "My projects",
@@ -66,6 +71,11 @@ const translations = {
     "site.docTitle": "Andrés Betancourt — Diseñador de Producto",
     "a11y.skip": "Saltar al contenido",
     "a11y.home": "Andrés Betancourt — inicio",
+    "a11y.lang": "Idioma",
+    "a11y.lightbox": "Imagen ampliada",
+    "a11y.close": "Cerrar",
+    "a11y.expandImage": "Ampliar imagen",
+    "a11y.expandPrefix": "Ampliar",
 
     "nav.about": "Sobre mí",
     "nav.projects": "Mis proyectos",
@@ -140,6 +150,15 @@ function registerTranslations(extra) {
 }
 window.registerTranslations = registerTranslations;
 
+function getTranslation(key, fallback) {
+  const lang = document.documentElement.getAttribute("data-lang") || DEFAULT_LANG;
+  const dict = translations[lang] || translations[DEFAULT_LANG];
+  if (dict && dict[key] !== undefined) return dict[key];
+  if (translations.en && translations.en[key] !== undefined) return translations.en[key];
+  return fallback !== undefined ? fallback : key;
+}
+window.getTranslation = getTranslation;
+
 // Private browsing and blocked-storage modes throw on access, and the
 // language toggle must keep working regardless.
 function readStoredLang() {
@@ -182,6 +201,8 @@ function applyTranslations(lang) {
     esBtn.setAttribute("aria-pressed", String(lang === "es"));
     enBtn.setAttribute("aria-pressed", String(lang === "en"));
   }
+
+  document.dispatchEvent(new CustomEvent("i18n:change", { detail: { lang } }));
 }
 
 function setLanguage(lang) {

@@ -56,9 +56,9 @@ window.registerTranslations({
 
     "wu.flows.kicker": "Process — user flows",
     "wu.flows.title": "Three flows, three different frictions",
-    "wu.flow.adminLabel": "01 · ADMINISTRATOR",
-    "wu.flow.studentLabel": "02 · STUDENT",
-    "wu.flow.parentLabel": "03 · PARENT / GUARDIAN",
+    "wu.flow.adminLabel": "01 · Administrator",
+    "wu.flow.studentLabel": "02 · Student",
+    "wu.flow.parentLabel": "03 · Parent / guardian",
     "wu.flow.a1t": "Choose modules",
     "wu.flow.a1d": "Fundraising, Financial, or both.",
     "wu.flow.a2t": "Invite members",
@@ -113,42 +113,52 @@ window.registerTranslations({
     "wu.tools.title": "An AI-supported flow to reach validation fast",
     "wu.tools.lede":
       "The client had a tight deadline for this delivery. Leaning on AI tools at every stage sped up screen production and got us to the first client-facing validation on time.",
-    "wu.tools.s1": "01 · DOCUMENTATION",
+    "wu.tools.s1": "Documentation",
     "wu.tools.s1d":
       "Meetings, briefs, and transcripts centralized — project context available throughout the process.",
-    "wu.tools.s2": "02 · EARLY PROTOTYPING",
+    "wu.tools.s2": "Early prototyping",
     "wu.tools.s2d":
       "Fast screen exploration in Figma Make, with a custom Make Kit to keep consistency across screens.",
-    "wu.tools.s3": "03 · ITERATION & COLLABORATION",
+    "wu.tools.s3": "Iteration & collaboration",
     "wu.tools.s3d":
       "Collaborative refinement and iteration with the client on designs already validated in Make.",
+    "wu.tools.outcome":
+      "Context in one place → screens in days → client-facing validation on time",
 
     "wu.system.kicker": "Visual system",
     "wu.system.title": "A system built to scale fast",
     "wu.system.color": "Color",
-    "wu.system.colorNote": "Indigo · Teal · Off-white · Coral (occasional accent)",
+    "wu.system.colorNote": "Indigo · Teal · Off-white · Amber (occasional accent)",
     "wu.system.type": "Typography",
     "wu.system.typeBody": "DM Sans — body text",
-    "wu.system.integrations": "Integrations inside the module",
-    "wu.system.integrationsNote": "Visible inside each module — never a separate module.",
-    "wu.system.library": "Component library",
+    "wu.system.library": "Financial UI components",
+    "wu.system.libraryNote":
+      "Demo chrome from the Money module — illustrative UI, not live outcomes.",
     "wu.system.btnPrimary": "New payment task",
     "wu.system.btnSecondary": "Remind",
     "wu.system.buttons": "Buttons",
     "wu.system.states": "States",
-    "wu.system.avatars": "Avatars",
+    "wu.system.statusPaid": "Paid",
+    "wu.system.statusPending": "Pending",
+    "wu.system.statusOverdue": "Overdue",
     "wu.system.progressLabel": "59% collected",
     "wu.system.progress": "Progress bar",
-    "wu.system.input": "Search members…",
     "wu.system.metricLabel": "Season collected",
+    "wu.system.metricValue": "$8,450",
     "wu.system.metric": "Accent card",
-    "wu.system.tabAll": "All",
-    "wu.system.tabPaid": "Paid",
-    "wu.system.tabOverdue": "Overdue",
-    "wu.system.notif": "Notification",
+
+    "wu.showcase.title": "The prototype, in motion",
+    "wu.showcase.lede":
+      "A closer look at the clickable prototype used in client validation sessions — the same admin dashboard, live on desktop and mobile.",
+    "wu.showcase.macbookCaption": "Admin dashboard — desktop",
+    "wu.showcase.iphoneCaption": "Same dashboard — mobile",
+    "wu.showcase.macbookAlt": "Screen recording of the WiddyUp admin dashboard prototype on desktop",
+    "wu.showcase.iphoneAlt": "Screen recording of the WiddyUp admin dashboard prototype on mobile",
 
     "wu.result.kicker": "Result",
     "wu.result.title": "From idea to client validation",
+    "wu.result.lede":
+      "A modular fundraising model, designed end-to-end and put in front of real clients — before writing a line of production code.",
     "wu.result.shotAdmin": "Admin dashboard desktop",
     "wu.result.shotMoney": "Money desktop",
     "wu.result.shotMessages": "Messages desktop",
@@ -160,7 +170,7 @@ window.registerTranslations({
     "wu.result.d3": "Mid-fi → hi-fi mockups, no wireframe stage",
     "wu.result.d4": "Clickable prototype for client validation",
     "wu.result.copy":
-      "The challenge wasn’t only visual. It was translating a modular business model — free layer plus independent upsells — into an information hierarchy a non-technical user could understand in seconds, fast enough to reach real client validation before writing a line of production code.",
+      "The challenge wasn’t only visual. It was translating a modular business model — free layer plus independent upsells — into an information hierarchy a non-technical user could understand in seconds.",
 
     "wu.close.title": "Validate the model before you build the product.",
     "wu.close.lede":
@@ -224,9 +234,9 @@ window.registerTranslations({
 
     "wu.flows.kicker": "Proceso — user flows",
     "wu.flows.title": "Tres flujos, tres fricciones distintas",
-    "wu.flow.adminLabel": "01 · ADMINISTRADOR",
-    "wu.flow.studentLabel": "02 · ESTUDIANTE",
-    "wu.flow.parentLabel": "03 · PADRE / ACUDIENTE",
+    "wu.flow.adminLabel": "01 · Administrador",
+    "wu.flow.studentLabel": "02 · Estudiante",
+    "wu.flow.parentLabel": "03 · Padre / acudiente",
     "wu.flow.a1t": "Elegir módulos",
     "wu.flow.a1d": "Fundraising, Financiero, o ambos.",
     "wu.flow.a2t": "Invitar miembros",
@@ -281,43 +291,52 @@ window.registerTranslations({
     "wu.tools.title": "Un flujo apoyado en AI para llegar rápido a validación",
     "wu.tools.lede":
       "El cliente tenía un plazo ajustado para esta entrega. Apoyarme en herramientas de AI en cada etapa del proceso permitió agilizar y acelerar la producción de las pantallas, y llegar a tiempo al primer acercamiento y validación que el cliente quería hacer con sus propios clientes.",
-    "wu.tools.s1": "01 · DOCUMENTACIÓN",
+    "wu.tools.s1": "Documentación",
     "wu.tools.s1d":
       "Reuniones, briefs y transcripts centralizados — contexto del proyecto accesible durante todo el proceso.",
-    "wu.tools.s2": "02 · PROTOTIPADO INICIAL",
+    "wu.tools.s2": "Prototipado inicial",
     "wu.tools.s2d":
       "Exploración rápida de pantallas en Figma Make, con un Make Kit propio para mantener consistencia entre pantallas.",
-    "wu.tools.s3": "03 · ITERACIÓN Y COLABORACIÓN",
+    "wu.tools.s3": "Iteración y colaboración",
     "wu.tools.s3d":
       "Refinamiento e iteración colaborativa con el cliente sobre los diseños ya validados en Make.",
+    "wu.tools.outcome":
+      "Contexto en un solo lugar → pantallas en días → validación con el cliente a tiempo",
 
     "wu.system.kicker": "Sistema visual",
     "wu.system.title": "Un sistema construido para escalar rápido",
     "wu.system.color": "Color",
-    "wu.system.colorNote": "Indigo · Teal · Off-white · Coral (acento ocasional)",
+    "wu.system.colorNote": "Indigo · Teal · Off-white · Amber (acento ocasional)",
     "wu.system.type": "Tipografía",
     "wu.system.typeBody": "DM Sans — body text",
-    "wu.system.integrations": "Integraciones dentro del módulo",
-    "wu.system.integrationsNote":
-      "Visibles dentro de cada módulo — nunca un módulo aparte.",
-    "wu.system.library": "Librería de componentes",
+    "wu.system.library": "Componentes de UI financiera",
+    "wu.system.libraryNote":
+      "Chrome de demo del módulo Money — UI ilustrativa, no resultados reales.",
     "wu.system.btnPrimary": "Nueva tarea de pago",
     "wu.system.btnSecondary": "Recordar",
     "wu.system.buttons": "Botones",
     "wu.system.states": "Estados",
-    "wu.system.avatars": "Avatares",
-    "wu.system.progressLabel": "59% collected",
+    "wu.system.statusPaid": "Pagado",
+    "wu.system.statusPending": "Pendiente",
+    "wu.system.statusOverdue": "Vencido",
+    "wu.system.progressLabel": "59% recaudado",
     "wu.system.progress": "Barra de progreso",
-    "wu.system.input": "Buscar miembros…",
-    "wu.system.metricLabel": "Season collected",
+    "wu.system.metricLabel": "Recaudado de la temporada",
+    "wu.system.metricValue": "$8,450",
     "wu.system.metric": "Card con acento",
-    "wu.system.tabAll": "Todos",
-    "wu.system.tabPaid": "Pagado",
-    "wu.system.tabOverdue": "Vencido",
-    "wu.system.notif": "Notificación",
+
+    "wu.showcase.title": "El prototipo, en movimiento",
+    "wu.showcase.lede":
+      "Un vistazo más cercano al prototipo clickeable usado en las sesiones de validación con el cliente — el mismo dashboard admin, en vivo en desktop y mobile.",
+    "wu.showcase.macbookCaption": "Dashboard admin — desktop",
+    "wu.showcase.iphoneCaption": "Mismo dashboard — mobile",
+    "wu.showcase.macbookAlt": "Grabación de pantalla del prototipo del dashboard admin de WiddyUp en desktop",
+    "wu.showcase.iphoneAlt": "Grabación de pantalla del prototipo del dashboard admin de WiddyUp en mobile",
 
     "wu.result.kicker": "Resultado",
     "wu.result.title": "De la idea a la validación con clientes",
+    "wu.result.lede":
+      "Un modelo de fundraising modular, diseñado de punta a punta y puesto frente a clientes reales — antes de escribir una línea de código de producción.",
     "wu.result.shotAdmin": "Dashboard admin desktop",
     "wu.result.shotMoney": "Money desktop",
     "wu.result.shotMessages": "Messages desktop",
@@ -329,7 +348,7 @@ window.registerTranslations({
     "wu.result.d3": "Mockups mid-fi → hi-fi, sin etapa de wireframes",
     "wu.result.d4": "Prototipo clickeable para validación con clientes",
     "wu.result.copy":
-      "El reto no fue solo visual. Fue traducir un modelo de negocio modular — capa gratuita más upsells independientes — en una jerarquía de información que un usuario no técnico entendiera en segundos, con la velocidad suficiente para llegar a validación real con clientes antes de escribir una línea de código de producción.",
+      "El reto no fue solo visual. Fue traducir un modelo de negocio modular — capa gratuita más upsells independientes — en una jerarquía de información que un usuario no técnico entendiera en segundos.",
 
     "wu.close.title": "Valida el modelo antes de construir el producto.",
     "wu.close.lede":

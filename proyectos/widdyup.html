@@ -36,7 +36,7 @@
     <img src="../assets/images/brands/widdyup.png" alt="WiddyUp" width="120" height="22" />
   </p>
 
-  <div class="lang-toggle" role="group" aria-label="Language">
+  <div class="lang-toggle" role="group" data-i18n-attr="aria-label:a11y.lang">
     <button type="button" data-lang-option="es" aria-pressed="false">ES</button>
     <span class="lang-sep" aria-hidden="true">/</span>
     <button type="button" data-lang-option="en" aria-pressed="true">EN</button>
@@ -45,13 +45,20 @@
 
 <main id="main">
 
-  <!-- HERO -->
+  <!-- HERO: brand + artifact first; meta after phones -->
   <section class="wu-hero" aria-labelledby="wu-heading">
-    <div class="wu-shell">
-      <div class="wu-kicker wu-kicker--on-indigo" data-i18n="wu.hero.kicker">Product design — case study</div>
+    <div class="wu-shell wu-hero-copy">
       <h1 class="wu-hero-title" id="wu-heading">WiddyUp</h1>
       <p class="wu-hero-lede" data-i18n="wu.hero.lede">Designing the financial layer of a school fundraising ecosystem — validated with real clients before writing a line of production code.</p>
+    </div>
 
+    <div class="wu-shell wu-hero-phones">
+      <img class="wu-phone-1" src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneAdmin" width="460" height="920" decoding="async" />
+      <img class="wu-phone-2" src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneMoney" width="460" height="920" decoding="async" />
+      <img class="wu-phone-3" src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phonePortfolio" width="460" height="920" decoding="async" />
+    </div>
+
+    <div class="wu-shell">
       <div class="wu-meta">
         <div class="wu-meta-item">
           <div class="wu-meta-label" data-i18n="wu.hero.productLabel">Product</div>
@@ -71,25 +78,18 @@
         </div>
       </div>
     </div>
-
-    <div class="wu-shell wu-hero-phones">
-      <img class="wu-phone-1" src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneAdmin" />
-      <img class="wu-phone-2" src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phoneMoney" />
-      <img class="wu-phone-3" src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.hero.phonePortfolio" />
-    </div>
   </section>
 
   <!-- CONTEXT -->
   <section class="wu-section" aria-labelledby="wu-context">
     <div class="wu-shell">
-      <div class="wu-kicker" data-i18n="wu.context.kicker">Context</div>
       <h2 class="wu-title" id="wu-context" data-i18n="wu.context.title">Scattered tools, zero visibility</h2>
       <p class="wu-lede" data-i18n="wu.context.lede">School bands, orchestras, and dance teams run fundraising and fee collection with spreadsheets, text messages, and cash. Program directors lose hours to manual follow-up; students and families never clearly know what they owe or why.</p>
 
-      <div class="wu-quote">
+      <blockquote class="wu-quote">
         <p data-i18n="wu.context.quote">"The product needs to feel like a Slack-style ecosystem: a free messaging and profiles layer, with payment modules that feel independent of each other — not mandatory as a bundle."</p>
-        <div class="wu-quote-label" data-i18n="wu.context.quoteLabel">Key business insight</div>
-      </div>
+        <footer class="wu-quote-label" data-i18n="wu.context.quoteLabel">Key business insight</footer>
+      </blockquote>
 
       <div class="wu-personas">
         <div class="wu-persona">
@@ -108,12 +108,45 @@
     </div>
   </section>
 
-  <!-- ARCHITECTURE -->
-  <section class="wu-section wu-section--tight-top" aria-labelledby="wu-arch">
+  <!-- TOOLS & AI — promoted early for staffing narrative -->
+  <section class="wu-section wu-section--tight-top wu-tools-section" aria-labelledby="wu-tools">
     <div class="wu-shell">
-      <div class="wu-kicker" data-i18n="wu.arch.kicker">Process — information architecture</div>
+      <h2 class="wu-title" id="wu-tools" data-i18n="wu.tools.title">An AI-supported flow to reach validation fast</h2>
+      <p class="wu-lede wu-lede--tight" data-i18n="wu.tools.lede">The client had a tight deadline for this delivery. Leaning on AI tools at every stage sped up screen production and got us to the first client-facing validation on time.</p>
+
+      <ol class="wu-tools">
+        <li class="wu-tool wu-tool--indigo">
+          <div class="wu-tool-body">
+            <div class="wu-tool-stage" data-i18n="wu.tools.s1">Documentation</div>
+            <h3>Claude Cowork</h3>
+            <p data-i18n="wu.tools.s1d">Meetings, briefs, and transcripts centralized — project context available throughout the process.</p>
+          </div>
+        </li>
+        <li class="wu-tool wu-tool--teal">
+          <div class="wu-tool-body">
+            <div class="wu-tool-stage" data-i18n="wu.tools.s2">Early prototyping</div>
+            <h3>Figma Make + Make Kit</h3>
+            <p data-i18n="wu.tools.s2d">Fast screen exploration in Figma Make, with a custom Make Kit to keep consistency across screens.</p>
+          </div>
+        </li>
+        <li class="wu-tool wu-tool--accent">
+          <div class="wu-tool-body">
+            <div class="wu-tool-stage" data-i18n="wu.tools.s3">Iteration &amp; collaboration</div>
+            <h3>Figma Design</h3>
+            <p data-i18n="wu.tools.s3d">Collaborative refinement and iteration with the client on designs already validated in Make.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="wu-tools-outcome" data-i18n="wu.tools.outcome">Context in one place → screens in days → client-facing validation on time</p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="wu-section" aria-labelledby="wu-arch">
+    <div class="wu-shell">
       <h2 class="wu-title" id="wu-arch" data-i18n="wu.arch.title">Four modules, one clear hierarchy</h2>
-      <p class="wu-lede" style="margin-bottom:48px" data-i18n="wu.arch.lede">Before drawing a single screen, I defined the product’s four modules and how they relate to each other.</p>
+      <p class="wu-lede wu-lede--tight" data-i18n="wu.arch.lede">Before drawing a single screen, I defined the product’s four modules and how they relate to each other.</p>
 
       <div class="wu-modules">
         <div class="wu-module wu-module--indigo">
@@ -160,12 +193,11 @@
   <!-- USER FLOWS -->
   <section class="wu-section wu-flows" aria-labelledby="wu-flows">
     <div class="wu-shell">
-      <div class="wu-kicker wu-kicker--on-indigo" data-i18n="wu.flows.kicker">Process — user flows</div>
       <h2 class="wu-title" id="wu-flows" data-i18n="wu.flows.title">Three flows, three different frictions</h2>
 
       <div class="wu-flow-grid">
         <div class="wu-flow-card">
-          <div class="wu-flow-card-label wu-flow-card-label--indigo" data-i18n="wu.flow.adminLabel">01 · ADMINISTRATOR</div>
+          <div class="wu-flow-card-label wu-flow-card-label--indigo" data-i18n="wu.flow.adminLabel">01 · Administrator</div>
           <div class="wu-timeline">
             <div class="wu-step">
               <div class="wu-step-rail"><div class="wu-step-node wu-step-node--indigo"></div><div class="wu-step-line"></div></div>
@@ -187,7 +219,7 @@
         </div>
 
         <div class="wu-flow-card">
-          <div class="wu-flow-card-label wu-flow-card-label--teal" data-i18n="wu.flow.studentLabel">02 · STUDENT</div>
+          <div class="wu-flow-card-label wu-flow-card-label--teal" data-i18n="wu.flow.studentLabel">02 · Student</div>
           <div class="wu-timeline">
             <div class="wu-step">
               <div class="wu-step-rail"><div class="wu-step-node wu-step-node--teal"></div><div class="wu-step-line"></div></div>
@@ -209,7 +241,7 @@
         </div>
 
         <div class="wu-flow-card">
-          <div class="wu-flow-card-label wu-flow-card-label--accent" data-i18n="wu.flow.parentLabel">03 · PARENT / GUARDIAN</div>
+          <div class="wu-flow-card-label wu-flow-card-label--accent" data-i18n="wu.flow.parentLabel">03 · Parent / guardian</div>
           <div class="wu-timeline">
             <div class="wu-step">
               <div class="wu-step-rail"><div class="wu-step-node wu-step-node--accent"></div><div class="wu-step-line"></div></div>
@@ -242,9 +274,8 @@
   <!-- MID-FI TO HI-FI -->
   <section class="wu-section" aria-labelledby="wu-iter">
     <div class="wu-shell">
-      <div class="wu-kicker" data-i18n="wu.iter.kicker">Process — from mid-fi to hi-fi</div>
       <h2 class="wu-title" id="wu-iter" data-i18n="wu.iter.title">I skipped wireframes. I iterated straight in Figma.</h2>
-      <p class="wu-lede" style="margin-bottom:20px;max-width:700px" data-i18n="wu.iter.lede">Given the timeline, I skipped low-fidelity wireframes and iterated directly in mid/hi-fi, using stakeholder comments as a fast feedback loop — 15-minute check-ins.</p>
+      <p class="wu-lede wu-lede--compact" data-i18n="wu.iter.lede">Given the timeline, I skipped low-fidelity wireframes and iterated directly in mid/hi-fi, using stakeholder comments as a fast feedback loop — 15-minute check-ins.</p>
 
       <div class="wu-iter">
         <div class="wu-iter-card">
@@ -253,11 +284,11 @@
 
           <div class="wu-compare-pair">
             <figure class="wu-compare-shot">
-              <img src="../assets/images/projects/widdyup/admin-home-before.png" alt="" data-i18n-attr="alt:wu.iter1.beforeAlt" />
+              <img src="../assets/images/projects/widdyup/admin-home-before.png" alt="" data-i18n-attr="alt:wu.iter1.beforeAlt" loading="lazy" decoding="async" />
               <figcaption data-i18n="wu.iter.before">Before</figcaption>
             </figure>
             <figure class="wu-compare-shot">
-              <img src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.iter1.afterAlt" />
+              <img src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.iter1.afterAlt" loading="lazy" decoding="async" />
               <figcaption data-i18n="wu.iter.after">After</figcaption>
             </figure>
           </div>
@@ -270,43 +301,16 @@
 
           <div class="wu-split">
             <div class="wu-split-card wu-split-card--mint">
-              <h4>Portfolio</h4>
+              <h3>Portfolio</h3>
               <p data-i18n="wu.iter2.portfolio">"This is me" — zero financial content.</p>
-              <img src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.portfolioAlt" />
+              <img src="../assets/images/projects/widdyup/portfolio-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.portfolioAlt" loading="lazy" decoding="async" />
             </div>
             <div class="wu-split-card wu-split-card--indigo">
-              <h4>Money</h4>
+              <h3>Money</h3>
               <p data-i18n="wu.iter2.money">"I'm funding experiences" — financial only.</p>
-              <img src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.moneyAlt" />
+              <img src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.iter2.moneyAlt" loading="lazy" decoding="async" />
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLS & AI -->
-  <section class="wu-section wu-section--tight-top" aria-labelledby="wu-tools">
-    <div class="wu-shell">
-      <div class="wu-kicker" data-i18n="wu.tools.kicker">Process — tools and AI</div>
-      <h2 class="wu-title" id="wu-tools" data-i18n="wu.tools.title">An AI-supported flow to reach validation fast</h2>
-      <p class="wu-lede" style="margin-bottom:48px;max-width:700px" data-i18n="wu.tools.lede">The client had a tight deadline for this delivery. Leaning on AI tools at every stage sped up screen production and got us to the first client-facing validation on time.</p>
-
-      <div class="wu-tools">
-        <div class="wu-tool">
-          <div class="wu-tool-step wu-tool-step--indigo" data-i18n="wu.tools.s1">01 · DOCUMENTATION</div>
-          <h3>Claude Cowork</h3>
-          <p data-i18n="wu.tools.s1d">Meetings, briefs, and transcripts centralized — project context available throughout the process.</p>
-        </div>
-        <div class="wu-tool">
-          <div class="wu-tool-step wu-tool-step--teal" data-i18n="wu.tools.s2">02 · EARLY PROTOTYPING</div>
-          <h3>Figma Make + Make Kit</h3>
-          <p data-i18n="wu.tools.s2d">Fast screen exploration in Figma Make, with a custom Make Kit to keep consistency across screens.</p>
-        </div>
-        <div class="wu-tool">
-          <div class="wu-tool-step wu-tool-step--accent" data-i18n="wu.tools.s3">03 · ITERATION &amp; COLLABORATION</div>
-          <h3>Figma Design</h3>
-          <p data-i18n="wu.tools.s3d">Collaborative refinement and iteration with the client on designs already validated in Make.</p>
         </div>
       </div>
     </div>
@@ -315,38 +319,28 @@
   <!-- VISUAL SYSTEM -->
   <section class="wu-section wu-section--tight-top" aria-labelledby="wu-system">
     <div class="wu-shell">
-      <div class="wu-kicker" data-i18n="wu.system.kicker">Visual system</div>
       <h2 class="wu-title" id="wu-system" data-i18n="wu.system.title">A system built to scale fast</h2>
 
       <div class="wu-system-grid">
         <div>
           <div class="wu-system-label" data-i18n="wu.system.color">Color</div>
           <div class="wu-swatches">
-            <div class="wu-swatch" style="background:#4F46E5"></div>
-            <div class="wu-swatch" style="background:#0EA5A0"></div>
+            <div class="wu-swatch" style="background:var(--wu-indigo)"></div>
+            <div class="wu-swatch" style="background:var(--wu-teal)"></div>
             <div class="wu-swatch wu-swatch--paper"></div>
-            <div class="wu-swatch" style="background:#F2C94C"></div>
+            <div class="wu-swatch" style="background:var(--wu-accent)"></div>
           </div>
-          <div class="wu-system-note" data-i18n="wu.system.colorNote">Indigo · Teal · Off-white · Coral (occasional accent)</div>
+          <div class="wu-system-note" data-i18n="wu.system.colorNote">Indigo · Teal · Off-white · Amber (occasional accent)</div>
         </div>
         <div>
           <div class="wu-system-label" data-i18n="wu.system.type">Typography</div>
           <div class="wu-type-display">Sora</div>
           <div class="wu-type-body" data-i18n="wu.system.typeBody">DM Sans — body text</div>
         </div>
-        <div>
-          <div class="wu-system-label" data-i18n="wu.system.integrations">Integrations inside the module</div>
-          <div class="wu-pills">
-            <div class="wu-pill">Stripe</div>
-            <div class="wu-pill">QuickBooks</div>
-            <div class="wu-pill">Google Workspace</div>
-            <div class="wu-pill">CutTime</div>
-          </div>
-          <div class="wu-system-note" data-i18n="wu.system.integrationsNote">Visible inside each module — never a separate module.</div>
-        </div>
       </div>
 
-      <div class="wu-system-label" data-i18n="wu.system.library">Component library</div>
+      <div class="wu-system-label" data-i18n="wu.system.library">Financial UI components</div>
+      <p class="wu-library-note" data-i18n="wu.system.libraryNote">Demo chrome from the Money module — illustrative UI, not live outcomes.</p>
       <div class="wu-library">
         <div class="wu-lib-cell">
           <div class="wu-btn-demo">
@@ -357,19 +351,11 @@
         </div>
         <div class="wu-lib-cell">
           <div class="wu-status-demo">
-            <div class="wu-status wu-status--paid">Paid</div>
-            <div class="wu-status wu-status--pending">Pending</div>
-            <div class="wu-status wu-status--overdue">Overdue</div>
+            <div class="wu-status wu-status--paid" data-i18n="wu.system.statusPaid">Paid</div>
+            <div class="wu-status wu-status--pending" data-i18n="wu.system.statusPending">Pending</div>
+            <div class="wu-status wu-status--overdue" data-i18n="wu.system.statusOverdue">Overdue</div>
           </div>
           <span data-i18n="wu.system.states">States</span>
-        </div>
-        <div class="wu-lib-cell">
-          <div class="wu-avatars">
-            <div class="wu-avatar wu-avatar--indigo">ER</div>
-            <div class="wu-avatar wu-avatar--pink">TM</div>
-            <div class="wu-avatar wu-avatar--peach">SK</div>
-          </div>
-          <span data-i18n="wu.system.avatars">Avatars</span>
         </div>
         <div class="wu-lib-cell">
           <div class="wu-progress-label" data-i18n="wu.system.progressLabel">59% collected</div>
@@ -377,31 +363,49 @@
           <span data-i18n="wu.system.progress">Progress bar</span>
         </div>
         <div class="wu-lib-cell">
-          <div class="wu-input-demo" data-i18n="wu.system.input">Search members…</div>
-          <span>Input</span>
-        </div>
-        <div class="wu-lib-cell">
           <div class="wu-metric-card">
             <small data-i18n="wu.system.metricLabel">Season collected</small>
-            <b>$8,450</b>
+            <b data-i18n="wu.system.metricValue">$8,450</b>
           </div>
           <span data-i18n="wu.system.metric">Accent card</span>
         </div>
-        <div class="wu-lib-cell">
-          <div class="wu-tabs-demo">
-            <span class="is-active" data-i18n="wu.system.tabAll">All</span>
-            <span data-i18n="wu.system.tabPaid">Paid</span>
-            <span data-i18n="wu.system.tabOverdue">Overdue</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE: prototype in motion -->
+  <section class="wu-section wu-showcase" aria-labelledby="wu-showcase">
+    <div class="wu-shell">
+      <h2 class="wu-title" id="wu-showcase" data-i18n="wu.showcase.title">The prototype, in motion</h2>
+      <p class="wu-lede wu-lede--tight" data-i18n="wu.showcase.lede">A closer look at the clickable prototype used in client validation sessions — the same admin dashboard, live on desktop and mobile.</p>
+
+      <div class="wu-devices">
+        <figure class="wu-device wu-device-macbook">
+          <div class="wu-mb-screen">
+            <div class="wu-mb-cam" aria-hidden="true"></div>
+            <div class="wu-mb-viewport">
+              <img src="../assets/images/projects/widdyup/demo/wu-demo-macbook.gif" alt="" data-i18n-attr="alt:wu.showcase.macbookAlt" width="768" height="480" loading="lazy" />
+            </div>
           </div>
-          <span>Tabs</span>
-        </div>
-        <div class="wu-lib-cell">
-          <div class="wu-notif" aria-hidden="true">
-            <div class="wu-notif-box"></div>
-            <div class="wu-notif-badge">3</div>
+          <div class="wu-mb-base" aria-hidden="true"></div>
+          <figcaption class="wu-device-caption" data-i18n="wu.showcase.macbookCaption">Admin dashboard — desktop</figcaption>
+        </figure>
+
+        <figure class="wu-device wu-device-iphone">
+          <div class="wu-ip-frame">
+            <span class="wu-ip-btn wu-ip-btn--mute" aria-hidden="true"></span>
+            <span class="wu-ip-btn wu-ip-btn--vol-up" aria-hidden="true"></span>
+            <span class="wu-ip-btn wu-ip-btn--vol-down" aria-hidden="true"></span>
+            <span class="wu-ip-btn wu-ip-btn--power" aria-hidden="true"></span>
+            <div class="wu-ip-notch">
+              <div class="wu-ip-island" aria-hidden="true"></div>
+            </div>
+            <div class="wu-ip-viewport">
+              <img src="../assets/images/projects/widdyup/demo/wu-demo-iphone.gif" alt="" data-i18n-attr="alt:wu.showcase.iphoneAlt" width="281" height="608" loading="lazy" />
+            </div>
           </div>
-          <span data-i18n="wu.system.notif">Notification</span>
-        </div>
+          <figcaption class="wu-device-caption" data-i18n="wu.showcase.iphoneCaption">Same dashboard — mobile</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -409,33 +413,45 @@
   <!-- RESULT -->
   <section class="wu-result" aria-labelledby="wu-result">
     <div class="wu-shell">
-      <div class="wu-kicker wu-kicker--on-teal" data-i18n="wu.result.kicker">Result</div>
-      <h2 class="wu-title" id="wu-result" data-i18n="wu.result.title">From idea to client validation</h2>
+      <header class="wu-result-head">
+        <h2 class="wu-title" id="wu-result" data-i18n="wu.result.title">From idea to client validation</h2>
+        <p class="wu-result-lede" data-i18n="wu.result.lede">A modular fundraising model, designed end-to-end and put in front of real clients — before writing a line of production code.</p>
+      </header>
 
-      <div class="wu-result-collage">
-        <img class="wu-shot-1" src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.result.shotAdmin" />
-        <img class="wu-shot-2" src="../assets/images/projects/widdyup/money-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMoney" />
-        <img class="wu-shot-3" src="../assets/images/projects/widdyup/messages-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMessages" />
-        <img class="wu-shot-4" src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotAdminMobile" />
-        <img class="wu-shot-5" src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotMoneyMobile" />
+      <div class="wu-result-collage" data-wu-reveal>
+        <figure class="wu-shot wu-shot-1">
+          <img src="../assets/images/projects/widdyup/admin-home-after.png" alt="" data-i18n-attr="alt:wu.result.shotAdmin" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="wu-shot wu-shot-2">
+          <img src="../assets/images/projects/widdyup/money-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMoney" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="wu-shot wu-shot-3">
+          <img src="../assets/images/projects/widdyup/messages-desktop.png" alt="" data-i18n-attr="alt:wu.result.shotMessages" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="wu-shot wu-shot-4">
+          <img src="../assets/images/projects/widdyup/admin-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotAdminMobile" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="wu-shot wu-shot-5">
+          <img src="../assets/images/projects/widdyup/money-mobile.png" alt="" data-i18n-attr="alt:wu.result.shotMoneyMobile" loading="lazy" decoding="async" />
+        </figure>
       </div>
 
-      <div class="wu-result-grid">
-        <div>
-          <div class="wu-deliver-label" data-i18n="wu.result.deliverables">Deliverables</div>
-          <div class="wu-deliver-list">
-            <div class="wu-deliver-track" aria-hidden="true"></div>
-            <div class="wu-deliver-fill" aria-hidden="true"></div>
-            <ul class="wu-deliver-items">
-              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d1">Information architecture</span></li>
-              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d2">User flows — admin / parent / student</span></li>
-              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d3">Mid-fi → hi-fi mockups, no wireframe stage</span></li>
-              <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d4">Clickable prototype for client validation</span></li>
-            </ul>
+      <div class="wu-result-foot">
+        <div class="wu-result-grid">
+          <div class="wu-result-deliver">
+            <div class="wu-deliver-label" data-i18n="wu.result.deliverables">Deliverables</div>
+            <div class="wu-deliver-list">
+              <div class="wu-deliver-track" aria-hidden="true"></div>
+              <div class="wu-deliver-fill" aria-hidden="true"></div>
+              <ol class="wu-deliver-items">
+                <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d1">Information architecture</span></li>
+                <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d2">User flows — admin / parent / student</span></li>
+                <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d3">Mid-fi → hi-fi mockups, no wireframe stage</span></li>
+                <li><span class="wu-deliver-node" aria-hidden="true"></span><span data-i18n="wu.result.d4">Clickable prototype for client validation</span></li>
+              </ol>
+            </div>
           </div>
-        </div>
-        <div>
-          <p class="wu-result-copy" data-i18n="wu.result.copy">The challenge wasn’t only visual. It was translating a modular business model — free layer plus independent upsells — into an information hierarchy a non-technical user could understand in seconds, fast enough to reach real client validation before writing a line of production code.</p>
+          <p class="wu-result-copy" data-i18n="wu.result.copy">The challenge wasn’t only visual. It was translating a modular business model — free layer plus independent upsells — into an information hierarchy a non-technical user could understand in seconds.</p>
         </div>
       </div>
     </div>
@@ -447,8 +463,8 @@
       <h2 class="wu-title" id="wu-close" data-i18n="wu.close.title">Validate the model before you build the product.</h2>
       <p class="wu-lede" data-i18n="wu.close.lede">A modular fundraising platform, designed end-to-end and put in front of real clients — without waiting on production engineering.</p>
       <div class="wu-actions">
-        <a class="btn btn--primary" href="../index.html#projects" data-i18n="wu.close.more">See more work</a>
-        <a class="btn btn--secondary" href="mailto:andres.betancourt.di@outlook.com" data-i18n="wu.close.contact">Get in touch</a>
+        <a class="btn btn--primary" href="mailto:andres.betancourt.di@outlook.com" data-i18n="wu.close.contact">Get in touch</a>
+        <a class="btn btn--secondary" href="../index.html#projects" data-i18n="wu.close.more">See more work</a>
       </div>
     </div>
   </section>
@@ -473,5 +489,6 @@
 <script src="../js/i18n.js"></script>
 <script src="../js/i18n-widdyup.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/lightbox.js?v=3"></script>
 </body>
 </html>
